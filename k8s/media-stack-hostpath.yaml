@@ -1,0 +1,949 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: media
+---
+# ========= PersistentVolumes (hostPath) =========
+# Bibliotecas y datos
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-media
+spec:
+  capacity: { storage: 5Ti }
+  accessModes: ["ReadWriteMany"]
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  hostPath: { path: /srv/reops/media_center_k8s/media }
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-downloads
+spec:
+  capacity: { storage: 2Ti }
+  accessModes: ["ReadWriteMany"]
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  hostPath: { path: /srv/reops/media_center_k8s/downloads }
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-iptv
+spec:
+  capacity: { storage: 20Gi }
+  accessModes: ["ReadWriteMany"]
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  hostPath: { path: /srv/reops/media_center_k8s/iptv }
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-recordings
+spec:
+  capacity: { storage: 2Ti }
+  accessModes: ["ReadWriteMany"]
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  hostPath: { path: /srv/reops/media_center_k8s/media/recordings }
+---
+# Configs
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-config-jellyfin
+spec:
+  capacity: { storage: 10Gi }
+  accessModes: ["ReadWriteOnce"]
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  hostPath: { path: /srv/reops/media_center_k8s/config/jellyfin }
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-config-qbittorrent
+spec:
+  capacity: { storage: 5Gi }
+  accessModes: ["ReadWriteOnce"]
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  hostPath: { path: /srv/reops/media_center_k8s/config/qbittorrent }
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-config-prowlarr
+spec:
+  capacity: { storage: 3Gi }
+  accessModes: ["ReadWriteOnce"]
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  hostPath: { path: /srv/reops/media_center_k8s/config/prowlarr }
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-config-sonarr
+spec:
+  capacity: { storage: 5Gi }
+  accessModes: ["ReadWriteOnce"]
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  hostPath: { path: /srv/reops/media_center_k8s/config/sonarr }
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-config-radarr
+spec:
+  capacity: { storage: 5Gi }
+  accessModes: ["ReadWriteOnce"]
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  hostPath: { path: /srv/reops/media_center_k8s/config/radarr }
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-config-bazarr
+spec:
+  capacity: { storage: 3Gi }
+  accessModes: ["ReadWriteOnce"]
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  hostPath: { path: /srv/reops/media_center_k8s/config/bazarr }
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-config-jellyseerr
+spec:
+  capacity: { storage: 3Gi }
+  accessModes: ["ReadWriteOnce"]
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  hostPath: { path: /srv/reops/media_center_k8s/config/jellyseerr }
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-config-lidarr
+spec:
+  capacity: { storage: 5Gi }
+  accessModes: ["ReadWriteOnce"]
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  hostPath: { path: /srv/reops/media_center_k8s/config/lidarr }
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-config-ombi
+spec:
+  capacity: { storage: 5Gi }
+  accessModes: ["ReadWriteOnce"]
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  hostPath: { path: /srv/reops/media_center_k8s/config/ombi }
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-config-stash
+spec:
+  capacity: { storage: 5Gi }
+  accessModes: ["ReadWriteOnce"]
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  hostPath: { path: /srv/reops/media_center_k8s/config/stash }
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-config-whisparr
+spec:
+  capacity: { storage: 5Gi }
+  accessModes: ["ReadWriteOnce"]
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  hostPath: { path: /srv/reops/media_center_k8s/config/whisparr }
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-mysql-ombi
+spec:
+  capacity: { storage: 20Gi }
+  accessModes: ["ReadWriteOnce"]
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  hostPath: { path: /srv/reops/media_center_k8s/mysql/ombi }
+---
+# ========= PVCs =========
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: media-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteMany"]
+  resources: { requests: { storage: 5Ti } }
+  storageClassName: ""
+  volumeName: pv-media
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: downloads-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteMany"]
+  resources: { requests: { storage: 2Ti } }
+  storageClassName: ""
+  volumeName: pv-downloads
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: iptv-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteMany"]
+  resources: { requests: { storage: 20Gi } }
+  storageClassName: ""
+  volumeName: pv-iptv
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: recordings-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteMany"]
+  resources: { requests: { storage: 2Ti } }
+  storageClassName: ""
+  volumeName: pv-recordings
+---
+# Config PVCs
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jellyfin-config-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources: { requests: { storage: 10Gi } }
+  storageClassName: ""
+  volumeName: pv-config-jellyfin
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: qbittorrent-config-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources: { requests: { storage: 5Gi } }
+  storageClassName: ""
+  volumeName: pv-config-qbittorrent
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: prowlarr-config-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources: { requests: { storage: 3Gi } }
+  storageClassName: ""
+  volumeName: pv-config-prowlarr
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sonarr-config-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources: { requests: { storage: 5Gi } }
+  storageClassName: ""
+  volumeName: pv-config-sonarr
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: radarr-config-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources: { requests: { storage: 5Gi } }
+  storageClassName: ""
+  volumeName: pv-config-radarr
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: bazarr-config-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources: { requests: { storage: 3Gi } }
+  storageClassName: ""
+  volumeName: pv-config-bazarr
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jellyseerr-config-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources: { requests: { storage: 3Gi } }
+  storageClassName: ""
+  volumeName: pv-config-jellyseerr
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: lidarr-config-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources: { requests: { storage: 5Gi } }
+  storageClassName: ""
+  volumeName: pv-config-lidarr
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ombi-config-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources: { requests: { storage: 5Gi } }
+  storageClassName: ""
+  volumeName: pv-config-ombi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: stash-config-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources: { requests: { storage: 5Gi } }
+  storageClassName: ""
+  volumeName: pv-config-stash
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: whisparr-config-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources: { requests: { storage: 5Gi } }
+  storageClassName: ""
+  volumeName: pv-config-whisparr
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ombi-mysql-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources: { requests: { storage: 20Gi } }
+  storageClassName: ""
+  volumeName: pv-mysql-ombi
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: media-defaults
+  namespace: media
+spec:
+  limits:
+  - type: Container
+    # Límite por defecto si no lo defines en el pod
+    default:
+      cpu: "100m"
+      memory: "256Mi"
+    # Request por defecto (garantía mínima)
+    defaultRequest:
+      cpu: "100m"
+      memory: "256Mi"
+
+---
+# ========= Deployments + Services =========
+# Jellyfin
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyfin
+  namespace: media
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: jellyfin } }
+  template:
+    metadata: { labels: { app: jellyfin } }
+    spec:
+      nodeSelector: { media-node: "true" }
+      containers:
+        - name: jellyfin
+          image: lscr.io/linuxserver/jellyfin:latest
+          env:
+            - { name: PUID, value: "1000" }
+            - { name: PGID, value: "1000" }
+            - { name: TZ, value: "America/Santo_Domingo" }
+          ports:
+            - { containerPort: 8096, name: http }
+          volumeMounts:
+            - { name: cfg, mountPath: /config }
+            - { name: media, mountPath: /data/media }         # RW (graba DVR)
+            - { name: iptv, mountPath: /data/iptv, readOnly: true }
+            - { name: rec,  mountPath: /data/recordings }
+      volumes:
+        - { name: cfg,  persistentVolumeClaim: { claimName: jellyfin-config-pvc } }
+        - { name: media, persistentVolumeClaim: { claimName: media-pvc } }
+        - { name: iptv, persistentVolumeClaim: { claimName: iptv-pvc } }
+        - { name: rec,  persistentVolumeClaim: { claimName: recordings-pvc } }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jellyfin
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: jellyfin }
+  ports:
+    - { name: http, port: 8096, targetPort: 8096 }
+---
+# qBittorrent
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qbittorrent
+  namespace: media
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: qbittorrent } }
+  template:
+    metadata: { labels: { app: qbittorrent } }
+    spec:
+      nodeSelector: { media-node: "true" }
+      containers:
+        - name: qbittorrent
+          image: lscr.io/linuxserver/qbittorrent:latest
+          env:
+            - { name: PUID, value: "1000" }
+            - { name: PGID, value: "1000" }
+            - { name: TZ, value: "America/Santo_Domingo" }
+            - { name: WEBUI_PORT, value: "8080" }
+          ports:
+            - { containerPort: 8080, name: web }
+            - { containerPort: 6881, name: bt-tcp, protocol: TCP }
+            - { containerPort: 6881, name: bt-udp, protocol: UDP }
+          volumeMounts:
+            - { name: cfg,  mountPath: /config }
+            - { name: dls,  mountPath: /data/downloads }
+            - { name: media,  mountPath: /data/media }
+      volumes:
+        - { name: cfg, persistentVolumeClaim: { claimName: qbittorrent-config-pvc } }
+        - { name: dls, persistentVolumeClaim: { claimName: downloads-pvc } }
+        - { name: media, persistentVolumeClaim: { claimName: media-pvc } }
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: qbittorrent
+  namespace: media
+spec:
+  selector: { app: qbittorrent }
+  type: ClusterIP
+  ports:
+    - { name: web,    port: 8080, targetPort: 8080  }
+    - { name: bt-tcp, port: 6881, targetPort: 6881, protocol: TCP }
+    - { name: bt-udp, port: 6881, targetPort: 6881, protocol: UDP }
+---
+# Prowlarr
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prowlarr
+  namespace: media
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: prowlarr } }
+  template:
+    metadata: { labels: { app: prowlarr } }
+    spec:
+      nodeSelector: { media-node: "true" }
+      containers:
+        - name: prowlarr
+          image: lscr.io/linuxserver/prowlarr:latest
+          env:
+            - { name: PUID, value: "1000" }
+            - { name: PGID, value: "1000" }
+            - { name: TZ, value: "America/Santo_Domingo" }
+          ports:
+            - { containerPort: 9696, name: http }
+          volumeMounts:
+            - { name: cfg, mountPath: /config }
+      volumes:
+        - { name: cfg, persistentVolumeClaim: { claimName: prowlarr-config-pvc } }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prowlarr
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: prowlarr }
+  ports:
+    - { name: http, port: 9696, targetPort: 9696 }
+---
+# Sonarr
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonarr
+  namespace: media
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: sonarr } }
+  template:
+    metadata: { labels: { app: sonarr } }
+    spec:
+      nodeSelector: { media-node: "true" }
+      containers:
+        - name: sonarr
+          image: lscr.io/linuxserver/sonarr:latest
+          env:
+            - { name: PUID, value: "1000" }
+            - { name: PGID, value: "1000" }
+            - { name: TZ, value: "America/Santo_Domingo" }
+          ports:
+            - { containerPort: 8989, name: http }
+          volumeMounts:
+            - { name: cfg,   mountPath: /config }
+            #- { name: tv,    mountPath: /data/media/tv }
+            - { name: dls,   mountPath: /data/downloads }
+            - { name: media, mountPath: /data/media } 
+      volumes:
+        - { name: cfg, persistentVolumeClaim: { claimName: sonarr-config-pvc } }
+        #- { name: tv,  persistentVolumeClaim: { claimName: media-pvc } }
+        - { name: dls, persistentVolumeClaim: { claimName: downloads-pvc } }
+        - { name: media, persistentVolumeClaim: { claimName: media-pvc } }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sonarr
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: sonarr }
+  ports:
+    - { name: http, port: 8989, targetPort: 8989 }
+---
+# Radarr
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: radarr
+  namespace: media
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: radarr } }
+  template:
+    metadata: { labels: { app: radarr } }
+    spec:
+      nodeSelector: { media-node: "true" }
+      containers:
+        - name: radarr
+          image: lscr.io/linuxserver/radarr:latest
+          env:
+            - { name: PUID, value: "1000" }
+            - { name: PGID, value: "1000" }
+            - { name: TZ, value: "America/Santo_Domingo" }
+          ports:
+            - { containerPort: 7878, name: http }
+          volumeMounts:
+            - { name: cfg,    mountPath: /config }
+            #- { name: movies, mountPath: /data/media/movies }
+            - { name: dls,    mountPath: /data/downloads }
+            - { name: media, mountPath: /data/media }  
+      volumes:
+        - { name: cfg,    persistentVolumeClaim: { claimName: radarr-config-pvc } }
+        #- { name: movies, persistentVolumeClaim: { claimName: media-pvc } }
+        - { name: dls,    persistentVolumeClaim: { claimName: downloads-pvc } }
+        - { name: media, persistentVolumeClaim: { claimName: media-pvc } }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: radarr
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: radarr }
+  ports:
+    - { name: http, port: 7878, targetPort: 7878 }
+---
+# Bazarr
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bazarr
+  namespace: media
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: bazarr } }
+  template:
+    metadata: { labels: { app: bazarr } }
+    spec:
+      nodeSelector: { media-node: "true" }
+      containers:
+        - name: bazarr
+          image: lscr.io/linuxserver/bazarr:latest
+          env:
+            - { name: PUID, value: "1000" }
+            - { name: PGID, value: "1000" }
+            - { name: TZ, value: "America/Santo_Domingo" }
+          ports:
+            - { containerPort: 6767, name: http }
+          volumeMounts:
+            - { name: cfg,   mountPath: /config }
+            - { name: media, mountPath: /data/media }
+      volumes:
+        - { name: cfg,   persistentVolumeClaim: { claimName: bazarr-config-pvc } }
+        - { name: media, persistentVolumeClaim: { claimName: media-pvc } }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bazarr
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: bazarr }
+  ports:
+    - { name: http, port: 6767, targetPort: 6767 }
+---
+# Jellyseerr
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jellyseerr
+  namespace: media
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: jellyseerr } }
+  template:
+    metadata: { labels: { app: jellyseerr } }
+    spec:
+      nodeSelector: { media-node: "true" }
+      containers:
+        - name: jellyseerr
+          image: fallenbagel/jellyseerr:latest
+          env:
+            - { name: TZ, value: "America/Santo_Domingo" }
+            - { name: LOG_LEVEL, value: "info" }
+          ports:
+            - { containerPort: 5055, name: http }
+          volumeMounts:
+            - { name: cfg, mountPath: /app/config }
+      volumes:
+        - { name: cfg, persistentVolumeClaim: { claimName: jellyseerr-config-pvc } }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jellyseerr
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: jellyseerr }
+  ports:
+    - { name: http, port: 5055, targetPort: 5055 }
+---
+# Lidarr
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lidarr
+  namespace: media
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: lidarr } }
+  template:
+    metadata: { labels: { app: lidarr } }
+    spec:
+      nodeSelector: { media-node: "true" }
+      containers:
+        - name: lidarr
+          image: lscr.io/linuxserver/lidarr:latest
+          env:
+            - { name: PUID, value: "1000" }
+            - { name: PGID, value: "1000" }
+            - { name: TZ, value: "America/Santo_Domingo" }
+          ports:
+            - { containerPort: 8686, name: http }
+          volumeMounts:
+            - { name: cfg,   mountPath: /config }
+            #- { name: music, mountPath: /data/media/music }
+            - { name: dls,   mountPath: /data/downloads }
+            - { name: media, mountPath: /data/media }
+      volumes:
+        - { name: cfg,   persistentVolumeClaim: { claimName: lidarr-config-pvc } }
+        #- { name: music, persistentVolumeClaim: { claimName: media-pvc } }
+        - { name: dls,   persistentVolumeClaim: { claimName: downloads-pvc } }
+        - { name: media, persistentVolumeClaim: { claimName: media-pvc } }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: lidarr
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: lidarr }
+  ports:
+    - { name: http, port: 8686, targetPort: 8686 }
+---
+# Ombi
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ombi
+  namespace: media
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: ombi } }
+  template:
+    metadata: { labels: { app: ombi } }
+    spec:
+      nodeSelector: { media-node: "true" }
+      containers:
+        - name: ombi
+          image: lscr.io/linuxserver/ombi:latest
+          env:
+            - { name: PUID, value: "1000" }
+            - { name: PGID, value: "1000" }
+            - { name: TZ, value: "America/Santo_Domingo" }
+          ports:
+            - { containerPort: 3579, name: http }
+          volumeMounts:
+            - { name: cfg, mountPath: /config }
+      volumes:
+        - { name: cfg, persistentVolumeClaim: { claimName: ombi-config-pvc } }
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ombi
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: ombi }
+  ports:
+    - { name: http, port: 3579, targetPort: 3579 }
+---
+#MySQL para Ombi
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: ombi-mysql
+ namespace: media
+spec:
+ replicas: 1
+ selector: { matchLabels: { app: ombi-mysql } }
+ template:
+   metadata: { labels: { app: ombi-mysql } }
+   spec:
+     nodeSelector: { media-node: "true" }
+     containers:
+       - name: mysql
+         image: mysql:8.4
+         args: ["--character-set-server=utf8mb4","--collation-server=utf8mb4_bin"]
+         env:
+           - { name: MYSQL_ROOT_PASSWORD, value: "password" }   # cambia esto
+           - { name: MYSQL_DATABASE, value: "Ombi" }
+           - { name: MYSQL_USER, value: "ombi" }
+           - { name: MYSQL_PASSWORD, value: "password" }        # cambia esto
+         ports:
+           - { containerPort: 3306, name: mysql }
+         volumeMounts:
+           - { name: data, mountPath: /var/lib/mysql }
+     volumes:
+       - { name: data, persistentVolumeClaim: { claimName: ombi-mysql-pvc } }
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: ombi-mysql
+ namespace: media
+spec:
+ selector: { app: ombi-mysql }
+ ports:
+   - { name: mysql, port: 3306, targetPort: 3306 }
+ type: ClusterIP
+---
+# Stash
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stash
+  namespace: media
+spec:
+  replicas: 0
+  selector: { matchLabels: { app: stash } }
+  template:
+    metadata: { labels: { app: stash } }
+    spec:
+      nodeSelector: { media-node: "true" }
+      containers:
+        - name: stash
+          image: stashapp/stash:latest
+          ports:
+            - { containerPort: 9999, name: http }
+          volumeMounts:
+            - { name: cfg,   mountPath: /root/.stash }
+            #- { name: adult, mountPath: /data/adult }
+            - { name: media, mountPath: /data/media } 
+      volumes:
+        - { name: cfg,   persistentVolumeClaim: { claimName: stash-config-pvc } }
+        #- { name: adult, persistentVolumeClaim: { claimName: media-pvc } }
+        - { name: media, persistentVolumeClaim: { claimName: media-pvc } } 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: stash
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: stash }
+  ports:
+    - { name: http, port: 9999, targetPort: 9999 }
+---
+# Whisparr
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whisparr
+  namespace: media
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: whisparr } }
+  template:
+    metadata: { labels: { app: whisparr } }
+    spec:
+      nodeSelector: { media-node: "true" }
+      containers:
+        - name: whisparr
+          #image: ghudiczius/whisparr:2.0.0.548.43
+          image: silencfox/whisparr:arm
+          env:
+            - { name: PUID, value: "1000" }
+            - { name: PGID, value: "1000" }
+            - { name: TZ, value: "America/Santo_Domingo" }
+          ports:
+            - { containerPort: 6969, name: http }
+          volumeMounts:
+            - { name: cfg,   mountPath: /config }
+            #- { name: adult, mountPath: /data/media/adult }
+            - { name: dls,   mountPath: /data/downloads }
+            - { name: media, mountPath: /data/media } 
+      volumes:
+        - { name: cfg,   persistentVolumeClaim: { claimName: whisparr-config-pvc } }
+        #- { name: adult, persistentVolumeClaim: { claimName: media-pvc } }
+        - { name: dls,   persistentVolumeClaim: { claimName: downloads-pvc } }
+        - { name: media, persistentVolumeClaim: { claimName: media-pvc } }        
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: whisparr
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: whisparr }
+  ports:
+    - { name: http, port: 6969, targetPort: 6969 }
+
+
+
+
+#################################
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-config-whisper
+spec:
+  capacity: { storage: 5Ti }
+  accessModes: ["ReadWriteMany"]
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: ""
+  hostPath: { path: /srv/reops/media_center_k8s/config/whisper }
+---
+
+
+# PersistentVolumeClaim
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: whisper-config-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources: { requests: { storage: 10Gi } }
+  storageClassName: ""
+  volumeName: pv-config-whisper
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whisper
+  namespace: media
+spec:
+  replicas: 0
+  selector: { matchLabels: { app: whisper } }
+  template:
+    metadata: { labels: { app: whisper } }
+    spec:
+      nodeSelector: { media-node: "true" }
+      containers:
+        - name: whisper
+          image: onerahmet/openai-whisper-asr-webservice:latest
+          env:
+            - { name: PUID, value: "1000" }
+            - { name: PGID, value: "1000" }
+            - { name: TZ, value: "America/Santo_Domingo" }
+            - { name: MODEL_NAME, value: "base" } # Usa "tiny" o "base" para Raspberry Pi (menos recursos)
+          ports:
+            - { containerPort: 9000, name: http }
+          volumeMounts:
+            - { name: config, mountPath: /app/models }
+      volumes:
+        - { name: config, persistentVolumeClaim: { claimName: whisper-config-pvc } }
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: whisper
+ namespace: media
+spec:
+ type: ClusterIP
+ selector: { app: whisper }
+ ports:
+   - { name: http, port: 9000, targetPort: 9000 }

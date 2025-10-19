@@ -1,0 +1,15 @@
+sonarr api:
+7a07927b71624c0aac87ccfe45dcd609
+
+Radarr api
+f0ec08c6505a41e093e6016e6a836a37
+
+
+Jellyfin  Api
+931e76e947164c28ac60c552757f16fc
+
+lidarr api
+692dc1ac289340208c14534be7cdb549
+
+whisper api
+d456d4c7498443afa5f53e4cfb311574

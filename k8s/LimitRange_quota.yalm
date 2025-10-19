@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: media-defaults
+  namespace: media
+spec:
+  limits:
+  - type: Container
+    defaultRequest:
+      cpu: "300m"
+      memory: "512Mi"
+    # Opcional: si pones límites, que sean holgados
+    # default:
+    #   cpu: "2"
+    #   memory: "2Gi"
+---
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: media-quota
+  namespace: media
+spec:
+  hard:
+    requests.cpu: "2"      # ajusta a tu Pi
+    limits.cpu: "4"
+    requests.memory: "4Gi"
+    limits.memory: "8Gi"
+

@@ -1,0 +1,357 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jellyfin
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: jellyfin.k8sdevops.com
+    external-dns.alpha.kubernetes.io/ttl: "120"
+    # OPCIONAL: si quieres forzar un CNAME en lugar de A:
+    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: jellyfin.k8sdevops.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: jellyfin
+            port:
+              number: 8096
+  tls:
+  - hosts:
+    - jellyfin.k8sdevops.com
+    secretName: jellyfin-kdvops-com-tls
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: qbittorrent
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: qbittorrent.k8sdevops.com
+    external-dns.alpha.kubernetes.io/ttl: "120"
+    # OPCIONAL: si quieres forzar un CNAME en lugar de A:
+    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: qbittorrent.k8sdevops.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: qbittorrent
+            port:
+              number: 8080
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: prowlarr
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: prowlarr.k8sdevops.com
+    external-dns.alpha.kubernetes.io/ttl: "120"
+    # OPCIONAL: si quieres forzar un CNAME en lugar de A:
+    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: prowlarr.k8sdevops.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: prowlarr
+            port:
+              number: 9696
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sonarr
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: sonarr.k8sdevops.com
+    external-dns.alpha.kubernetes.io/ttl: "120"
+    # OPCIONAL: si quieres forzar un CNAME en lugar de A:
+    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: sonarr.k8sdevops.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: sonarr
+            port:
+              number: 8989
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: radarr
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: radarr.k8sdevops.com
+    external-dns.alpha.kubernetes.io/ttl: "120"
+    # OPCIONAL: si quieres forzar un CNAME en lugar de A:
+    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: radarr.k8sdevops.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: radarr
+            port:
+              number: 7878
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: readarr
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: readarr.k8sdevops.com
+    external-dns.alpha.kubernetes.io/ttl: "120"
+    # OPCIONAL: si quieres forzar un CNAME en lugar de A:
+    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: readarr.k8sdevops.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: readarr
+            port:
+              number: 8787
+  tls:
+  - hosts:
+    - readarr.k8sdevops.com
+    secretName: readarr-kdvops-com-tls
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: bazarr
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: bazarr.k8sdevops.com
+    external-dns.alpha.kubernetes.io/ttl: "120"
+    # OPCIONAL: si quieres forzar un CNAME en lugar de A:
+    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: bazarr.k8sdevops.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: bazarr
+            port:
+              number: 6767
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: jellyseerr
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: jellyseerr.k8sdevops.com
+    external-dns.alpha.kubernetes.io/ttl: "120"
+    # OPCIONAL: si quieres forzar un CNAME en lugar de A:
+    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: jellyseerr.k8sdevops.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: jellyseerr
+            port:
+              number: 5055
+  tls:
+  - hosts:
+    - jellyseerr.k8sdevops.com
+    secretName: jellyseerr-kdvops-com-tls
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: lidarr
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: lidarr.k8sdevops.com
+    external-dns.alpha.kubernetes.io/ttl: "120"
+    # OPCIONAL: si quieres forzar un CNAME en lugar de A:
+    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: lidarr.k8sdevops.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: lidarr
+            port:
+              number: 8686
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ombi
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: ombi.k8sdevops.com
+    external-dns.alpha.kubernetes.io/ttl: "120"
+    # OPCIONAL: si quieres forzar un CNAME en lugar de A:
+    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: ombi.k8sdevops.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: ombi
+            port:
+              number: 3579
+  tls:
+  - hosts:
+    - ombi.k8sdevops.com
+    secretName: ombi-kdvops-com-tls
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: stash
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: stash.k8sdevops.com
+    external-dns.alpha.kubernetes.io/ttl: "120"
+    # OPCIONAL: si quieres forzar un CNAME en lugar de A:
+    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: stash.k8sdevops.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: stash
+            port:
+              number: 9999
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: whisparr
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: whisparr.k8sdevops.com
+    external-dns.alpha.kubernetes.io/ttl: "120"
+    # OPCIONAL: si quieres forzar un CNAME en lugar de A:
+    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+spec:
+  ingressClassName: traefik
+  rules:
+  - host: whisparr.k8sdevops.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: whisparr
+            port:
+              number: 6969
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+ name: whisper
+ namespace: media
+ annotations:
+   external-dns.alpha.kubernetes.io/hostname: whisper.k8sdevops.com
+   external-dns.alpha.kubernetes.io/ttl: "120"
+    #OPCIONAL: si quieres forzar un CNAME en lugar de A:
+   external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+spec:
+ ingressClassName: traefik
+ rules:
+ - host: whisper.k8sdevops.com
+   http:
+     paths:
+     - path: /
+       pathType: Prefix
+       backend:
+         service:
+           name: whisper
+           port:
+             number: 9000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+ name: mylar
+ namespace: media
+ annotations:
+   external-dns.alpha.kubernetes.io/hostname: mylar.k8sdevops.com
+   external-dns.alpha.kubernetes.io/ttl: "120"
+    #OPCIONAL: si quieres forzar un CNAME en lugar de A:
+   external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+spec:
+ ingressClassName: traefik
+ rules:
+ - host: mylar.k8sdevops.com
+   http:
+     paths:
+     - path: /
+       pathType: Prefix
+       backend:
+         service:
+           name: mylar
+           port:
+             number: 8090
+

@@ -1,0 +1,43 @@
+services:
+  whisparr:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        WHISPARR_REF: "develop"   # cámbialo por un tag si quieres fijar versión
+    image: local/whisparr:native
+    container_name: whisparr3
+
+    # Para Raspberry Pi 4/5:
+    #   déjalo en linux/arm64
+    # En PC/servidor x86_64:
+    #   comenta esta línea.
+    #platform: linux/arm64
+
+    user: "${PUID:-1000}:${PGID:-1000}"
+
+    environment:
+      - UMASK= "002"
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Santo_Domingo
+      # Si alguna vez lo publicas como single-file (no necesario aquí),
+      # evita /tmp y extrae en volumen persistente:
+      # DOTNET_BUNDLE_EXTRACT_BASE_DIR: "/config/.bundle"
+
+    ports:
+      - "6968:6969"
+
+    volumes:
+      - ./config:/config
+      - ./data:/data
+      - ./downloads:/downloads
+
+    restart: unless-stopped
+
+#    healthcheck:
+#      test: ["CMD-SHELL","curl -fsS http://127.0.0.1:6969 || exit 1"]
+#      interval: 30s
+#      timeout: 5s
+#      retries: 10
+#      start_period: 60s

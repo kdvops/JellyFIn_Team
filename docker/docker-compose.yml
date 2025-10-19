@@ -1,0 +1,212 @@
+version: "3.9"
+
+networks:
+  media_net: {}
+
+services:
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    container_name: jellyfin
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Santo_Domingo
+    volumes:
+      - ./config/jellyfin:/config
+      #- ./media:/data/media:ro
+      - ./media:/data/media
+      - ./downloads:/data/downloads:ro
+      - ./iptv:/data/iptv:ro              # <- NUEVO: playlist/EPG locales
+      - ./media/recordings:/data/recordings  # <- NUEVO: carpeta de grabaciones
+    # En Windows NO usar /dev/dri. Si migras a Linux, podrás reactivarlo.
+    ports:
+      - "8096:8096"   # Web (HTTP)
+      # - "8920:8920" # HTTPS opcional
+    restart: unless-stopped
+    networks: [media_net]
+
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Santo_Domingo
+      - WEBUI_PORT=8080
+    volumes:
+      - ./config/qbittorrent:/config
+      - ./downloads:/data/downloads
+    ports:
+      - "8080:8080"   # WebUI
+      - "6881:6881"   # BitTorrent TCP
+      - "6881:6881/udp"
+    restart: unless-stopped
+    networks: [media_net]
+
+  prowlarr:
+    image: lscr.io/linuxserver/prowlarr:latest
+    container_name: prowlarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Santo_Domingo
+    volumes:
+      - ./config/prowlarr:/config
+    ports:
+      - "9696:9696"
+    restart: unless-stopped
+    networks: [media_net]
+
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Santo_Domingo
+    volumes:
+      - ./config/sonarr:/config
+      - ./media/tv:/data/media/tv
+      - ./downloads:/data/downloads
+    ports:
+      - "8989:8989"
+    depends_on: [qbittorrent, prowlarr]
+    restart: unless-stopped
+    networks: [media_net]
+
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Santo_Domingo
+    volumes:
+      - ./config/radarr:/config
+      - ./media/movies:/data/media/movies
+      - ./downloads:/data/downloads
+    ports:
+      - "7878:7878"
+    depends_on: [qbittorrent, prowlarr]
+    restart: unless-stopped
+    networks: [media_net]
+
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Santo_Domingo
+    volumes:
+      - ./config/bazarr:/config
+      - ./media:/data/media
+    ports:
+      - "6767:6767"
+    depends_on: [sonarr, radarr]
+    restart: unless-stopped
+    networks: [media_net]
+
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
+    environment:
+      - TZ=America/Santo_Domingo
+      - LOG_LEVEL=info
+    volumes:
+      - ./config/jellyseerr:/app/config
+    ports:
+      - "5055:5055"
+    depends_on: [jellyfin]
+    restart: unless-stopped
+    networks: [media_net]
+
+  # === NUEVO: Música ===
+  lidarr:
+    image: lscr.io/linuxserver/lidarr:latest
+    container_name: lidarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Santo_Domingo
+    volumes:
+      - ./config/lidarr:/config
+      - ./media/music:/data/media/music
+      - ./downloads:/data/downloads
+    ports:
+      - "8686:8686"
+    depends_on: [qbittorrent, prowlarr]
+    restart: unless-stopped
+    networks: [media_net]
+
+  # === NUEVO: Portal de solicitudes (Movies/TV/Music) ===
+  ombi:
+    image: lscr.io/linuxserver/ombi:latest
+    container_name: ombi
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Santo_Domingo
+    volumes:
+      - ./config/ombi:/config
+    ports:
+      - "3579:3579"
+    depends_on: [jellyfin, sonarr, radarr, lidarr]
+    restart: unless-stopped
+    networks: [media_net]
+
+
+  ombi-mysql:
+    image: mysql:8.4
+    container_name: ombi-mysql
+    command: [
+      "--character-set-server=utf8mb4",
+      "--collation-server=utf8mb4_bin"
+    ]
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=Ombi
+      - MYSQL_USER=ombi
+      - MYSQL_PASSWORD=password
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+    restart: unless-stopped
+    networks: [media_net]
+
+
+  # === Adulto: gestor / automatizador ===
+  whisparr:
+    #image: lscr.io/linuxserver/whisparr:latest
+    image: ghudiczius/whisparr:2.0.0.548.43
+    container_name: whisparr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Santo_Domingo
+    volumes:
+      - ./config/whisparr:/config
+      - ./media/adult:/data/media/adult
+      - ./downloads:/data/downloads
+    ports:
+      - "6969:6969"
+    depends_on: [qbittorrent, prowlarr]
+    restart: unless-stopped
+    networks: [media_net]
+
+  # === Adulto: exploración/gestión local (Stash) ===
+  stash:
+    image: stashapp/stash:latest
+    container_name: stash
+    # Stash guarda su DB/config en /root/.stash
+    volumes:
+      - ./config/stash:/root/.stash
+      # Tu librería adulta (puedes añadir más rutas si quieres)
+      - ./media/adult:/data/adult
+      # (Opcional) metadatos/exports si quieres separarlos
+      # - ./config/stash/metadata:/metadata
+    ports:
+      - "9999:9999"
+    restart: unless-stopped
+    networks: [media_net]

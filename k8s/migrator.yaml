@@ -1,0 +1,47 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: media-migrator
+  namespace: media
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: raspberrypi   # ajusta si aplica
+      restartPolicy: Never
+      containers:
+        - name: migrator
+          image: alpine:3.20
+          command: ["/bin/sh","-lc"]
+          args:
+            - |
+              set -e
+              echo "Copiando..."
+              ls -la /src | head -n 50 || true
+              mkdir -p /dest
+              cp -a /src/. /dest/
+              echo "Listo"
+
+              set -euo pipefail
+              apk add --no-cache rsync
+              # Copia solo lo que NO exista en destino
+              rsync -a --ignore-existing --no-perms --no-owner --no-group \
+                    --info=stats2,progress2 \
+                    /src/  /dest/
+              # (opcional) Ajusta permisos para tus contenedores linuxserver (PUID/PGID=1000)
+              chown -R 1000:1000 /dest || true
+
+          volumeMounts:
+            - name: src-host
+              mountPath: /src
+            - name: dest-pvc
+              mountPath: /dest
+      volumes:
+        - name: src-host
+          hostPath:
+            path: /srv/reops/media_center_k8s/media   # ojo: "repos" vs "reops"
+            type: Directory
+        - name: dest-pvc
+          persistentVolumeClaim:
+            claimName: media-pvc   # tu PVC RWX de Longhorn
