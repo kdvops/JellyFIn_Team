@@ -46,6 +46,17 @@ spec:
     metadata: { labels: { app: jellyfin } }
     spec:
       #nodeSelector: { media-node: "true" }
+      nodeSelector:
+        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - rasppi516
       containers:
         - name: jellyfin
           image: lscr.io/linuxserver/jellyfin:latest
@@ -91,6 +102,8 @@ spec:
     metadata: { labels: { app: qbittorrent } }
     spec:
       #nodeSelector: { media-node: "true" }
+      nodeSelector:
+        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
       containers:
         - name: qbittorrent
           image: lscr.io/linuxserver/qbittorrent:latest
@@ -139,6 +152,17 @@ spec:
     metadata: { labels: { app: prowlarr } }
     spec:
       #nodeSelector: { media-node: "true" }
+      nodeSelector:
+        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - rasppi516
       containers:
         - name: prowlarr
           image: lscr.io/linuxserver/prowlarr:latest
@@ -180,6 +204,17 @@ spec:
     metadata: { labels: { app: sonarr } }
     spec:
       #nodeSelector: { media-node: "true" }
+      nodeSelector:
+        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - rasppi516
       containers:
         - name: sonarr
           image: lscr.io/linuxserver/sonarr:latest
@@ -223,6 +258,17 @@ spec:
     metadata: { labels: { app: radarr } }
     spec:
       #nodeSelector: { media-node: "true" }
+      nodeSelector:
+        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - rasppi516
       containers:
         - name: radarr
           image: lscr.io/linuxserver/radarr:latest
@@ -265,6 +311,17 @@ spec:
   template:
     metadata: { labels: { app: readarr } }
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - rasppi516
       securityContext:
         fsGroup: 1000
       containers:
@@ -314,6 +371,17 @@ spec:
     metadata: { labels: { app: bazarr } }
     spec:
       #nodeSelector: { media-node: "true" }
+      nodeSelector:
+        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - rasppi516
       containers:
         - name: bazarr
           image: lscr.io/linuxserver/bazarr:latest
@@ -357,6 +425,17 @@ spec:
     metadata: { labels: { app: jellyseerr } }
     spec:
       #nodeSelector: { media-node: "true" }
+      nodeSelector:
+        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - rasppi516
       containers:
         - name: jellyseerr
           image: fallenbagel/jellyseerr:latest
@@ -397,6 +476,17 @@ spec:
     metadata: { labels: { app: lidarr } }
     spec:
       #nodeSelector: { media-node: "true" }
+      nodeSelector:
+        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - rasppi516
       containers:
         - name: lidarr
           image: lscr.io/linuxserver/lidarr:latest
@@ -440,6 +530,17 @@ spec:
     metadata: { labels: { app: ombi } }
     spec:
       #nodeSelector: { media-node: "true" }
+      nodeSelector:
+        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - rasppi516
       containers:
         - name: ombi
           image: lscr.io/linuxserver/ombi:latest
@@ -481,7 +582,17 @@ spec:
     metadata: { labels: { app: whisparr } }
     spec:
       #nodeSelector: { media-node: "true" }
-
+      nodeSelector:
+        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - rasppi516
       securityContext:               # <--- AÑADIDO AQUÍ (nivel Pod)
         runAsUser: 1000
         runAsGroup: 1000
@@ -531,6 +642,17 @@ spec:
     metadata: { labels: { app: whisper } }
     spec:
       #nodeSelector: { media-node: "true" }
+      nodeSelector:
+        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - rasppi516
       containers:
         - name: whisper
           image: onerahmet/openai-whisper-asr-webservice:latest
@@ -559,6 +681,17 @@ spec:
     metadata: { labels: { app: stash } }
     spec:
       #nodeSelector: { media-node: "true" }
+      nodeSelector:
+        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - rasppi516
       containers:
         - name: stash
           image: stashapp/stash:latest
@@ -601,6 +734,17 @@ spec:
       labels:
         app: mylar
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - rasppi516
       securityContext:
         runAsUser: 0
         runAsGroup: 0
