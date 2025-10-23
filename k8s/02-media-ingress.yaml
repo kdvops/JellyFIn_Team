@@ -4,7 +4,7 @@ metadata:
   name: jellyfin
   namespace: media
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: jellyfin.k8sdevops.com
+    external-dns.alpha.kubernetes.io/hostname: jellyfin.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
     external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
@@ -12,7 +12,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: jellyfin.k8sdevops.com
+  - host: jellyfin.kdvops.com
     http:
       paths:
       - path: /
@@ -24,7 +24,7 @@ spec:
               number: 8096
   tls:
   - hosts:
-    - jellyfin.k8sdevops.com
+    - jellyfin.kdvops.com
     secretName: jellyfin-kdvops-com-tls
 ---
 apiVersion: networking.k8s.io/v1
@@ -33,14 +33,14 @@ metadata:
   name: qbittorrent
   namespace: media
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: qbittorrent.k8sdevops.com
+    external-dns.alpha.kubernetes.io/hostname: qbittorrent.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
     external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
 spec:
   ingressClassName: traefik
   rules:
-  - host: qbittorrent.k8sdevops.com
+  - host: qbittorrent.kdvops.com
     http:
       paths:
       - path: /
@@ -57,14 +57,14 @@ metadata:
   name: prowlarr
   namespace: media
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: prowlarr.k8sdevops.com
+    external-dns.alpha.kubernetes.io/hostname: prowlarr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
     external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
 spec:
   ingressClassName: traefik
   rules:
-  - host: prowlarr.k8sdevops.com
+  - host: prowlarr.kdvops.com
     http:
       paths:
       - path: /
@@ -81,14 +81,14 @@ metadata:
   name: sonarr
   namespace: media
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: sonarr.k8sdevops.com
+    external-dns.alpha.kubernetes.io/hostname: sonarr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
     external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
 spec:
   ingressClassName: traefik
   rules:
-  - host: sonarr.k8sdevops.com
+  - host: sonarr.kdvops.com
     http:
       paths:
       - path: /
@@ -105,14 +105,14 @@ metadata:
   name: radarr
   namespace: media
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: radarr.k8sdevops.com
+    external-dns.alpha.kubernetes.io/hostname: radarr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
     external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
 spec:
   ingressClassName: traefik
   rules:
-  - host: radarr.k8sdevops.com
+  - host: radarr.kdvops.com
     http:
       paths:
       - path: /
@@ -129,7 +129,7 @@ metadata:
   name: readarr
   namespace: media
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: readarr.k8sdevops.com
+    external-dns.alpha.kubernetes.io/hostname: readarr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
     external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
@@ -137,7 +137,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: readarr.k8sdevops.com
+  - host: readarr.kdvops.com
     http:
       paths:
       - path: /
@@ -149,7 +149,7 @@ spec:
               number: 8787
   tls:
   - hosts:
-    - readarr.k8sdevops.com
+    - readarr.kdvops.com
     secretName: readarr-kdvops-com-tls
 ---
 apiVersion: networking.k8s.io/v1
@@ -158,14 +158,14 @@ metadata:
   name: bazarr
   namespace: media
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: bazarr.k8sdevops.com
+    external-dns.alpha.kubernetes.io/hostname: bazarr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
     external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
 spec:
   ingressClassName: traefik
   rules:
-  - host: bazarr.k8sdevops.com
+  - host: bazarr.kdvops.com
     http:
       paths:
       - path: /
@@ -182,7 +182,7 @@ metadata:
   name: jellyseerr
   namespace: media
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: jellyseerr.k8sdevops.com
+    external-dns.alpha.kubernetes.io/hostname: jellyseerr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
     external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
@@ -190,7 +190,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: jellyseerr.k8sdevops.com
+  - host: jellyseerr.kdvops.com
     http:
       paths:
       - path: /
@@ -202,7 +202,7 @@ spec:
               number: 5055
   tls:
   - hosts:
-    - jellyseerr.k8sdevops.com
+    - jellyseerr.kdvops.com
     secretName: jellyseerr-kdvops-com-tls
 ---
 apiVersion: networking.k8s.io/v1
@@ -211,14 +211,14 @@ metadata:
   name: lidarr
   namespace: media
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: lidarr.k8sdevops.com
+    external-dns.alpha.kubernetes.io/hostname: lidarr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
     external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
 spec:
   ingressClassName: traefik
   rules:
-  - host: lidarr.k8sdevops.com
+  - host: lidarr.kdvops.com
     http:
       paths:
       - path: /
@@ -235,7 +235,7 @@ metadata:
   name: ombi
   namespace: media
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: ombi.k8sdevops.com
+    external-dns.alpha.kubernetes.io/hostname: ombi.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
     external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
@@ -243,7 +243,7 @@ metadata:
 spec:
   ingressClassName: traefik
   rules:
-  - host: ombi.k8sdevops.com
+  - host: ombi.kdvops.com
     http:
       paths:
       - path: /
@@ -255,7 +255,7 @@ spec:
               number: 3579
   tls:
   - hosts:
-    - ombi.k8sdevops.com
+    - ombi.kdvops.com
     secretName: ombi-kdvops-com-tls
 ---
 apiVersion: networking.k8s.io/v1
@@ -264,14 +264,14 @@ metadata:
   name: stash
   namespace: media
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: stash.k8sdevops.com
+    external-dns.alpha.kubernetes.io/hostname: stash.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
     external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
 spec:
   ingressClassName: traefik
   rules:
-  - host: stash.k8sdevops.com
+  - host: stash.kdvops.com
     http:
       paths:
       - path: /
@@ -288,14 +288,14 @@ metadata:
   name: whisparr
   namespace: media
   annotations:
-    external-dns.alpha.kubernetes.io/hostname: whisparr.k8sdevops.com
+    external-dns.alpha.kubernetes.io/hostname: whisparr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
     external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
 spec:
   ingressClassName: traefik
   rules:
-  - host: whisparr.k8sdevops.com
+  - host: whisparr.kdvops.com
     http:
       paths:
       - path: /
@@ -313,14 +313,14 @@ metadata:
  name: whisper
  namespace: media
  annotations:
-   external-dns.alpha.kubernetes.io/hostname: whisper.k8sdevops.com
+   external-dns.alpha.kubernetes.io/hostname: whisper.kdvops.com
    external-dns.alpha.kubernetes.io/ttl: "120"
     #OPCIONAL: si quieres forzar un CNAME en lugar de A:
    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
 spec:
  ingressClassName: traefik
  rules:
- - host: whisper.k8sdevops.com
+ - host: whisper.kdvops.com
    http:
      paths:
      - path: /
@@ -337,14 +337,14 @@ metadata:
  name: mylar
  namespace: media
  annotations:
-   external-dns.alpha.kubernetes.io/hostname: mylar.k8sdevops.com
+   external-dns.alpha.kubernetes.io/hostname: mylar.kdvops.com
    external-dns.alpha.kubernetes.io/ttl: "120"
     #OPCIONAL: si quieres forzar un CNAME en lugar de A:
    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
 spec:
  ingressClassName: traefik
  rules:
- - host: mylar.k8sdevops.com
+ - host: mylar.kdvops.com
    http:
      paths:
      - path: /
