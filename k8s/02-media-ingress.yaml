@@ -7,7 +7,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: jellyfin.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+    external-dns.alpha.kubernetes.io/target: "silencfox.duckdns.org"
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: traefik
@@ -36,7 +36,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: qbittorrent.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+    external-dns.alpha.kubernetes.io/target: "silencfox.duckdns.org"
 spec:
   ingressClassName: traefik
   rules:
@@ -60,7 +60,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: prowlarr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+    external-dns.alpha.kubernetes.io/target: "silencfox.duckdns.org"
 spec:
   ingressClassName: traefik
   rules:
@@ -84,7 +84,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: sonarr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+    external-dns.alpha.kubernetes.io/target: "silencfox.duckdns.org"
 spec:
   ingressClassName: traefik
   rules:
@@ -108,7 +108,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: radarr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+    external-dns.alpha.kubernetes.io/target: "silencfox.duckdns.org"
 spec:
   ingressClassName: traefik
   rules:
@@ -132,7 +132,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: readarr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+    external-dns.alpha.kubernetes.io/target: "silencfox.duckdns.org"
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: traefik
@@ -161,7 +161,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: bazarr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+    external-dns.alpha.kubernetes.io/target: "silencfox.duckdns.org"
 spec:
   ingressClassName: traefik
   rules:
@@ -185,7 +185,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: jellyseerr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+    external-dns.alpha.kubernetes.io/target: "silencfox.duckdns.org"
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: traefik
@@ -214,7 +214,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: lidarr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+    external-dns.alpha.kubernetes.io/target: "silencfox.duckdns.org"
 spec:
   ingressClassName: traefik
   rules:
@@ -238,7 +238,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: ombi.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+    external-dns.alpha.kubernetes.io/target: "silencfox.duckdns.org"
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: traefik
@@ -267,7 +267,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: stash.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+    external-dns.alpha.kubernetes.io/target: "silencfox.duckdns.org"
 spec:
   ingressClassName: traefik
   rules:
@@ -291,7 +291,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: whisparr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+    external-dns.alpha.kubernetes.io/target: "silencfox.duckdns.org"
 spec:
   ingressClassName: traefik
   rules:
@@ -316,7 +316,7 @@ metadata:
    external-dns.alpha.kubernetes.io/hostname: whisper.kdvops.com
    external-dns.alpha.kubernetes.io/ttl: "120"
     #OPCIONAL: si quieres forzar un CNAME en lugar de A:
-   external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+   external-dns.alpha.kubernetes.io/target: "silencfox.duckdns.org"
 spec:
  ingressClassName: traefik
  rules:
@@ -340,7 +340,7 @@ metadata:
    external-dns.alpha.kubernetes.io/hostname: mylar.kdvops.com
    external-dns.alpha.kubernetes.io/ttl: "120"
     #OPCIONAL: si quieres forzar un CNAME en lugar de A:
-   external-dns.alpha.kubernetes.io/target: "kdvops.dyndns.com"
+   external-dns.alpha.kubernetes.io/target: "silencfox.duckdns.org"
 spec:
  ingressClassName: traefik
  rules:
