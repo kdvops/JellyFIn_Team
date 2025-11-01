@@ -7,7 +7,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: jellyfin.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "silencfox.duckdns.org"
+    external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   ingressClassName: traefik
