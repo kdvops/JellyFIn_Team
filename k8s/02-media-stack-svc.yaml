@@ -1,0 +1,205 @@
+---
+# jellyfin
+apiVersion: v1
+kind: Service
+metadata:
+  name: jellyfin
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: jellyfin }
+  externalIPs:
+    - 10.0.0.16
+    - 10.0.0.20
+  ports:
+    - { name: http, port: 8096, targetPort: 8096 }
+---
+# qBittorrent
+apiVersion: v1
+kind: Service
+metadata:
+  name: qbittorrent
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: qbittorrent }
+  externalIPs:
+    - 10.0.0.16
+    - 10.0.0.20
+  ports:
+    - { name: web,    port: 8080, targetPort: 8080 }
+    - { name: bt-tcp, port: 6881, targetPort: 6881, protocol: TCP }
+    - { name: bt-udp, port: 6881, targetPort: 6881, protocol: UDP }
+---
+# Prowlarr
+apiVersion: v1
+kind: Service
+metadata:
+  name: prowlarr
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: prowlarr }
+  externalIPs:
+    - 10.0.0.16
+    - 10.0.0.20
+  ports:
+    - { name: http, port: 9696, targetPort: 9696 }
+---
+# Sonarr
+apiVersion: v1
+kind: Service
+metadata:
+  name: sonarr
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: sonarr }
+  externalIPs:
+    - 10.0.0.16
+    - 10.0.0.20
+  ports:
+    - { name: http, port: 8989, targetPort: 8989 }
+---
+# Radarr
+apiVersion: v1
+kind: Service
+metadata:
+  name: radarr
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: radarr }
+  externalIPs:
+    - 10.0.0.16
+    - 10.0.0.20
+  ports:
+    - { name: http, port: 7878, targetPort: 7878 }
+---
+# readarr
+apiVersion: v1
+kind: Service
+metadata:
+  name: readarr
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: readarr }
+  externalIPs:
+    - 10.0.0.16
+    - 10.0.0.20
+  ports:
+    - port: 8787
+      targetPort: 8787
+
+---
+# Bazarr
+apiVersion: v1
+kind: Service
+metadata:
+  name: bazarr
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: bazarr }
+  externalIPs:
+    - 10.0.0.16
+    - 10.0.0.20
+  ports:
+    - { name: http, port: 6767, targetPort: 6767 }
+---
+# Jellyseerr
+apiVersion: v1
+kind: Service
+metadata:
+  name: jellyseerr
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: jellyseerr }
+  externalIPs:
+    - 10.0.0.16
+    - 10.0.0.20
+  ports:
+    - { name: http, port: 5055, targetPort: 5055 }
+---
+# Lidarr
+apiVersion: v1
+kind: Service
+metadata:
+  name: lidarr
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: lidarr }
+  externalIPs:
+    - 10.0.0.16
+    - 10.0.0.20
+  ports:
+    - { name: http, port: 8686, targetPort: 8686 }
+---
+# Ombi
+apiVersion: v1
+kind: Service
+metadata:
+  name: ombi
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: ombi }
+  externalIPs:
+    - 10.0.0.16
+    - 10.0.0.20
+  ports:
+    - { name: http, port: 3579, targetPort: 3579 }
+---
+# Whisparr
+apiVersion: v1
+kind: Service
+metadata:
+  name: whisparr
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: whisparr }
+  externalIPs:
+    - 10.0.0.16
+    - 10.0.0.20
+  ports:
+    - { name: http, port: 6969, targetPort: 6969 }
+---
+# Whisper (asr) - desactivado por defecto (replicas: 0)
+
+---
+# Stash
+apiVersion: v1
+kind: Service
+metadata:
+  name: stash
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: stash }
+  externalIPs:
+    - 10.0.0.16
+    - 10.0.0.20
+  ports:
+    - { name: http, port: 9999, targetPort: 9999 }
+---
+# ========= Mylar =========
+apiVersion: v1
+kind: Service
+metadata:
+  name: mylar
+  namespace: media
+spec:
+  type: ClusterIP
+  selector:
+    app: mylar
+  externalIPs:
+    - 10.0.0.16
+    - 10.0.0.20
+  ports:
+    - name: http
+      port: 8090
+      targetPort: 8090
