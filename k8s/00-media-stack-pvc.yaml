@@ -48,7 +48,7 @@ metadata:
   name: jellyfin-config-pvc
   namespace: media
 spec:
-  accessModes: ["ReadWriteOnce"]
+  accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 3Gi } }
   storageClassName: longhorn
 ---
@@ -58,7 +58,7 @@ metadata:
   name: qbittorrent-config-pvc
   namespace: media
 spec:
-  accessModes: ["ReadWriteOnce"]
+  accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
 ---
@@ -68,7 +68,7 @@ metadata:
   name: prowlarr-config-pvc
   namespace: media
 spec:
-  accessModes: ["ReadWriteOnce"]
+  accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
 ---
@@ -78,7 +78,7 @@ metadata:
   name: sonarr-config-pvc
   namespace: media
 spec:
-  accessModes: ["ReadWriteOnce"]
+  accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
 ---
@@ -88,7 +88,7 @@ metadata:
   name: radarr-config-pvc
   namespace: media
 spec:
-  accessModes: ["ReadWriteOnce"]
+  accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
 ---
@@ -98,7 +98,7 @@ metadata:
   name: readarr-config-pvc
   namespace: media
 spec:
-  accessModes: ["ReadWriteOnce"]
+  accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
 ---
@@ -108,7 +108,7 @@ metadata:
   name: bazarr-config-pvc
   namespace: media
 spec:
-  accessModes: ["ReadWriteOnce"]
+  accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
 ---
@@ -118,7 +118,7 @@ metadata:
   name: jellyseerr-config-pvc
   namespace: media
 spec:
-  accessModes: ["ReadWriteOnce"]
+  accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
 ---
@@ -128,7 +128,7 @@ metadata:
   name: lidarr-config-pvc
   namespace: media
 spec:
-  accessModes: ["ReadWriteOnce"]
+  accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
 ---
@@ -138,7 +138,7 @@ metadata:
   name: ombi-config-pvc
   namespace: media
 spec:
-  accessModes: ["ReadWriteOnce"]
+  accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
 ---
@@ -148,7 +148,7 @@ metadata:
   name: stash-config-pvc
   namespace: media
 spec:
-  accessModes: ["ReadWriteOnce"]
+  accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
 ---
@@ -158,7 +158,7 @@ metadata:
   name: whisparr-config-pvc
   namespace: media
 spec:
-  accessModes: ["ReadWriteOnce"]
+  accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
 ---
@@ -168,7 +168,7 @@ metadata:
   name: whisper-config-pvc
   namespace: media
 spec:
-  accessModes: ["ReadWriteOnce"]
+  accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
 ---
@@ -178,7 +178,7 @@ metadata:
   name: mylar-config-pvc
   namespace: media
 spec:
-  accessModes: ["ReadWriteOnce"]
+  accessModes: ["ReadWriteMany"]
   resources:
     requests:
       storage: 1Gi
