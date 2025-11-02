@@ -1,28 +1,25 @@
-# ========= Deployments + Services =========
+# ========= ROLLOUTS (Argo Rollouts) =========
 # Jellyfin
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: jellyfin
   namespace: media
 spec:
   replicas: 1
   selector: { matchLabels: { app: jellyfin } }
+  strategy:
+    canary:
+      steps:
+        - setWeight: 50
+        - pause: { duration: 30s }
+        - setWeight: 100
+        - pause: { duration: 10s }
   template:
     metadata: { labels: { app: jellyfin } }
     spec:
-      #nodeSelector: { media-node: "true" }
       nodeSelector:
-        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/hostname
-                    operator: In
-                    values:
-                      - rasppi516
+        kubernetes.io/hostname: rasppi516
       containers:
         - name: jellyfin
           image: lscr.io/linuxserver/jellyfin:latest
@@ -35,28 +32,32 @@ spec:
           volumeMounts:
             - { name: cfg, mountPath: /config }
             - { name: media, mountPath: /data/media }
-            #- { name: media-hostpath, mountPath: /data/media-hostpath }         # RW (graba DVR)
       volumes:
         - { name: cfg,  persistentVolumeClaim: { claimName: jellyfin-config-pvc } }
         - { name: media, persistentVolumeClaim: { claimName: media-pvc } }
-        #- { name: media-hostpath, persistentVolumeClaim: { claimName: pv-media-hostpath } }
 
 ---
 # qBittorrent
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: qbittorrent
   namespace: media
 spec:
   replicas: 1
   selector: { matchLabels: { app: qbittorrent } }
+  strategy:
+    canary:
+      steps:
+        - setWeight: 50
+        - pause: { duration: 30s }
+        - setWeight: 100
+        - pause: { duration: 10s }
   template:
     metadata: { labels: { app: qbittorrent } }
     spec:
-      #nodeSelector: { media-node: "true" }
       nodeSelector:
-        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
+        kubernetes.io/hostname: rasppi516
       containers:
         - name: qbittorrent
           image: lscr.io/linuxserver/qbittorrent:latest
@@ -78,29 +79,26 @@ spec:
 
 ---
 # Prowlarr
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: prowlarr
   namespace: media
 spec:
   replicas: 1
   selector: { matchLabels: { app: prowlarr } }
+  strategy:
+    canary:
+      steps:
+        - setWeight: 50
+        - pause: { duration: 30s }
+        - setWeight: 100
+        - pause: { duration: 10s }
   template:
     metadata: { labels: { app: prowlarr } }
     spec:
-      #nodeSelector: { media-node: "true" }
       nodeSelector:
-        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/hostname
-                    operator: In
-                    values:
-                      - rasppi516
+        kubernetes.io/hostname: rasppi516
       containers:
         - name: prowlarr
           image: lscr.io/linuxserver/prowlarr:latest
@@ -117,29 +115,26 @@ spec:
 
 ---
 # Sonarr
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: sonarr
   namespace: media
 spec:
   replicas: 1
   selector: { matchLabels: { app: sonarr } }
+  strategy:
+    canary:
+      steps:
+        - setWeight: 50
+        - pause: { duration: 30s }
+        - setWeight: 100
+        - pause: { duration: 10s }
   template:
     metadata: { labels: { app: sonarr } }
     spec:
-      #nodeSelector: { media-node: "true" }
       nodeSelector:
-        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/hostname
-                    operator: In
-                    values:
-                      - rasppi516
+        kubernetes.io/hostname: rasppi516
       containers:
         - name: sonarr
           image: lscr.io/linuxserver/sonarr:latest
@@ -158,29 +153,26 @@ spec:
 
 ---
 # Radarr
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: radarr
   namespace: media
 spec:
   replicas: 1
   selector: { matchLabels: { app: radarr } }
+  strategy:
+    canary:
+      steps:
+        - setWeight: 50
+        - pause: { duration: 30s }
+        - setWeight: 100
+        - pause: { duration: 10s }
   template:
     metadata: { labels: { app: radarr } }
     spec:
-      #nodeSelector: { media-node: "true" }
       nodeSelector:
-        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/hostname
-                    operator: In
-                    values:
-                      - rasppi516
+        kubernetes.io/hostname: rasppi516
       containers:
         - name: radarr
           image: lscr.io/linuxserver/radarr:latest
@@ -198,29 +190,27 @@ spec:
         - { name: media,  persistentVolumeClaim: { claimName: media-pvc } }
 
 ---
-
-apiVersion: apps/v1
-kind: Deployment
+# Readarr
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: readarr
   namespace: media
 spec:
   replicas: 1
   selector: { matchLabels: { app: readarr } }
+  strategy:
+    canary:
+      steps:
+        - setWeight: 50
+        - pause: { duration: 30s }
+        - setWeight: 100
+        - pause: { duration: 10s }
   template:
     metadata: { labels: { app: readarr } }
     spec:
       nodeSelector:
-        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/hostname
-                    operator: In
-                    values:
-                      - rasppi516
+        kubernetes.io/hostname: rasppi516
       securityContext:
         fsGroup: 1000
       containers:
@@ -239,33 +229,30 @@ spec:
         - name: config
           persistentVolumeClaim: { claimName: readarr-config-pvc }
         - name: media
-          persistentVolumeClaim: { claimName: media-pvc }   # tu Longhorn RWX/RWO
+          persistentVolumeClaim: { claimName: media-pvc }
 
 ---
 # Bazarr
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: bazarr
   namespace: media
 spec:
   replicas: 1
   selector: { matchLabels: { app: bazarr } }
+  strategy:
+    canary:
+      steps:
+        - setWeight: 50
+        - pause: { duration: 30s }
+        - setWeight: 100
+        - pause: { duration: 10s }
   template:
     metadata: { labels: { app: bazarr } }
     spec:
-      #nodeSelector: { media-node: "true" }
       nodeSelector:
-        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/hostname
-                    operator: In
-                    values:
-                      - rasppi516
+        kubernetes.io/hostname: rasppi516
       containers:
         - name: bazarr
           image: lscr.io/linuxserver/bazarr:latest
@@ -281,293 +268,3 @@ spec:
       volumes:
         - { name: cfg,   persistentVolumeClaim: { claimName: bazarr-config-pvc } }
         - { name: media, persistentVolumeClaim: { claimName: media-pvc } }
-
----
-# Jellyseerr
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: jellyseerr
-  namespace: media
-spec:
-  replicas: 1
-  selector: { matchLabels: { app: jellyseerr } }
-  template:
-    metadata: { labels: { app: jellyseerr } }
-    spec:
-      #nodeSelector: { media-node: "true" }
-      nodeSelector:
-        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/hostname
-                    operator: In
-                    values:
-                      - rasppi516
-      containers:
-        - name: jellyseerr
-          image: fallenbagel/jellyseerr:latest
-          env:
-            - { name: TZ, value: "America/Santo_Domingo" }
-            - { name: LOG_LEVEL, value: "info" }
-          ports:
-            - { containerPort: 5055, name: http }
-          volumeMounts:
-            - { name: cfg, mountPath: /app/config }
-      volumes:
-        - { name: cfg, persistentVolumeClaim: { claimName: jellyseerr-config-pvc } }
----
-# Lidarr
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: lidarr
-  namespace: media
-spec:
-  replicas: 1
-  selector: { matchLabels: { app: lidarr } }
-  template:
-    metadata: { labels: { app: lidarr } }
-    spec:
-      #nodeSelector: { media-node: "true" }
-      nodeSelector:
-        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/hostname
-                    operator: In
-                    values:
-                      - rasppi516
-      containers:
-        - name: lidarr
-          image: lscr.io/linuxserver/lidarr:latest
-          env:
-            - { name: PUID, value: "1000" }
-            - { name: PGID, value: "1000" }
-            - { name: TZ, value: "America/Santo_Domingo" }
-          ports:
-            - { containerPort: 8686, name: http }
-          volumeMounts:
-            - { name: cfg,   mountPath: /config }
-            - { name: media, mountPath: /data/media }
-      volumes:
-        - { name: cfg,   persistentVolumeClaim: { claimName: lidarr-config-pvc } }
-        - { name: media, persistentVolumeClaim: { claimName: media-pvc } }
----
-# Ombi
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: ombi
-  namespace: media
-spec:
-  replicas: 1
-  selector: { matchLabels: { app: ombi } }
-  template:
-    metadata: { labels: { app: ombi } }
-    spec:
-      #nodeSelector: { media-node: "true" }
-      nodeSelector:
-        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/hostname
-                    operator: In
-                    values:
-                      - rasppi516
-      containers:
-        - name: ombi
-          image: lscr.io/linuxserver/ombi:latest
-          env:
-            - { name: PUID, value: "1000" }
-            - { name: PGID, value: "1000" }
-            - { name: TZ, value: "America/Santo_Domingo" }
-          ports:
-            - { containerPort: 3579, name: http }
-          volumeMounts:
-            - { name: cfg, mountPath: /config }
-      volumes:
-        - { name: cfg, persistentVolumeClaim: { claimName: ombi-config-pvc } }
----
-# Whisparr
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: whisparr
-  namespace: media
-spec:
-  replicas: 1
-  selector: { matchLabels: { app: whisparr } }
-  template:
-    metadata: { labels: { app: whisparr } }
-    spec:
-      #nodeSelector: { media-node: "true" }
-      nodeSelector:
-        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/hostname
-                    operator: In
-                    values:
-                      - rasppi516
-      securityContext:               # <--- AÑADIDO AQUÍ (nivel Pod)
-        runAsUser: 1000
-        runAsGroup: 1000
-        fsGroup: 1000
-        fsGroupChangePolicy: OnRootMismatch
-
-      containers:
-        - name: whisparr
-          image: silencfox/whisparr:arm
-          env:
-            - { name: PUID, value: "1000" }
-            - { name: PGID, value: "1000" }
-            - { name: TZ, value: "America/Santo_Domingo" }
-          ports:
-            - { containerPort: 6969, name: http }
-          volumeMounts:
-            - { name: cfg,   mountPath: /config }
-            - { name: media, mountPath: /data/media }
-      volumes:
-        - { name: cfg,   persistentVolumeClaim: { claimName: whisparr-config-pvc } }
-        - { name: media, persistentVolumeClaim: { claimName: media-pvc } }
-
----
-# Whisper (asr) - desactivado por defecto (replicas: 0)
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: whisper
-  namespace: media
-spec:
-  replicas: 0
-  selector: { matchLabels: { app: whisper } }
-  template:
-    metadata: { labels: { app: whisper } }
-    spec:
-      #nodeSelector: { media-node: "true" }
-      nodeSelector:
-        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/hostname
-                    operator: In
-                    values:
-                      - rasppi516
-      containers:
-        - name: whisper
-          image: onerahmet/openai-whisper-asr-webservice:latest
-          env:
-            - { name: PUID, value: "1000" }
-            - { name: PGID, value: "1000" }
-            - { name: TZ, value: "America/Santo_Domingo" }
-            - { name: MODEL_NAME, value: "base" }
-          ports:
-            - { containerPort: 9000, name: http }
-          volumeMounts:
-            - { name: config, mountPath: /app/models }
-      volumes:
-        - { name: config, persistentVolumeClaim: { claimName: whisper-config-pvc } }
----
-# Stash
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: stash
-  namespace: media
-spec:
-  replicas: 0
-  selector: { matchLabels: { app: stash } }
-  template:
-    metadata: { labels: { app: stash } }
-    spec:
-      #nodeSelector: { media-node: "true" }
-      nodeSelector:
-        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/hostname
-                    operator: In
-                    values:
-                      - rasppi516
-      containers:
-        - name: stash
-          image: stashapp/stash:latest
-          ports:
-            - { containerPort: 9999, name: http }
-          volumeMounts:
-            - { name: cfg,   mountPath: /root/.stash }
-            - { name: media, mountPath: /data/media } 
-      volumes:
-        - { name: cfg,   persistentVolumeClaim: { claimName: stash-config-pvc } }
-        - { name: media, persistentVolumeClaim: { claimName: media-pvc } } 
----
-# ========= Mylar =========
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: mylar
-  namespace: media
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: mylar
-  template:
-    metadata:
-      labels:
-        app: mylar
-    spec:
-      nodeSelector:
-        kubernetes.io/hostname: rasppi516       # 👈 obligatorio
-      affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-              - matchExpressions:
-                  - key: kubernetes.io/hostname
-                    operator: In
-                    values:
-                      - rasppi516
-      securityContext:
-        runAsUser: 0
-        runAsGroup: 0
-        fsGroup: 1000
-        fsGroupChangePolicy: OnRootMismatch
-      containers:
-        - name: mylar
-          image: lscr.io/linuxserver/mylar3:latest
-          env:
-            - { name: PUID, value: "1000" }
-            - { name: PGID, value: "1000" }
-            - { name: TZ, value: "America/Santo_Domingo" }
-          ports:
-            - { containerPort: 8090, name: http }
-          volumeMounts:
-            - { name: cfg,        mountPath: /config }
-            - { name: media,      mountPath: /data/media }
-      volumes:
-        - name: cfg
-          persistentVolumeClaim:
-            claimName: mylar-config-pvc
-        - name: media
-          persistentVolumeClaim:
-            claimName: media-pvc
