@@ -45,13 +45,13 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: jellyfin-config-pvc
+  name: jellyfin-config-pv
   namespace: media
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 3Gi } }
   storageClassName: longhorn
-  volumeName: jellyfin-config-pv
+  #volumeName: jellyfin-config-pvc
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
