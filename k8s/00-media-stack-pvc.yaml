@@ -50,7 +50,7 @@ metadata:
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 3Gi } }
-  storageClassName: longhorn
+  storageClassName: longhorn-static
   #volumeName: jellyfin-config-pvc
 ---
 apiVersion: v1
