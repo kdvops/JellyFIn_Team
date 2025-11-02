@@ -33,7 +33,7 @@ spec:
             - { name: cfg, mountPath: /config }
             - { name: media, mountPath: /data/media }
       volumes:
-        - { name: cfg,  persistentVolumeClaim: { claimName: jellyfin-config-pvc } }
+        - { name: cfg,  persistentVolumeClaim: { claimName: jellyfin-config-pv } }
         - { name: media, persistentVolumeClaim: { claimName: media-pvc } }
 
 ---
