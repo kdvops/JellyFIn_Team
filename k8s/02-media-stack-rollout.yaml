@@ -30,8 +30,8 @@ spec:
           ports:
             - { containerPort: 8096, name: http }
           volumeMounts:
-            - { name: cfg, mountPath: /config }
-            - { name: cfg2, mountPath: /config2 }
+            - { name: cfg, mountPath: /config2 }
+            - { name: cfg2, mountPath: /config }
             - { name: media, mountPath: /data/media }
       volumes:
         - { name: cfg,  persistentVolumeClaim: { claimName: jellyfin-config-pv } }
