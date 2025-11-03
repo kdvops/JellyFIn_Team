@@ -41,7 +41,19 @@ spec:
   resources: { requests: { storage: 500Gi } }
   storageClassName: longhorn
 ---
-# Config (RWO)
+# Config (RWX)
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jellyfin-config-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteMany"]
+  resources: { requests: { storage: 10Gi } }
+  storageClassName: longhorn
+  #volumeName: jellyfin-config-pvc
+---
+# Config (RWX)
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
