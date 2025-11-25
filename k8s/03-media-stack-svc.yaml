@@ -170,38 +170,6 @@ spec:
 ---
 # Whisper (asr) - desactivado por defecto (replicas: 0)
 
----
-# Stash
-apiVersion: v1
-kind: Service
-metadata:
-  name: stash
-  namespace: media
-spec:
-  type: ClusterIP
-  selector: { app: stash }
-  externalIPs:
-    - 10.0.0.16
-    - 10.0.0.20
-  ports:
-    - { name: http, port: 9999, targetPort: 9999 }
-
----
-# stashbox
-apiVersion: v1
-kind: Service
-metadata:
-  name: stashbox
-  namespace: media
-spec:
-  type: ClusterIP
-  selector: { app: stashbox }
-  externalIPs:
-    - 10.0.0.16
-    - 10.0.0.20
-  ports:
-    - { name: http, port: 9998, targetPort: 9998 }
-
 
 ---
 # ========= Mylar =========
@@ -223,22 +191,55 @@ spec:
       targetPort: 8090
 
 ---
-# ========= Mylar =========
-apiVersion: v1
-kind: Service
-metadata:
-  name: avradarr
-  namespace: media
-spec:
-  type: ClusterIP
-  selector:
-    app: avradarr
-  externalIPs:
-    - 10.0.0.16
-    - 10.0.0.20
-  ports:
-    - name: http
-      port: 8989
-      targetPort: 8989
+# # Stash
+# apiVersion: v1
+# kind: Service
+# metadata:
+  # name: stash
+  # namespace: media
+# spec:
+  # type: ClusterIP
+  # selector: { app: stash }
+  # externalIPs:
+    # - 10.0.0.16
+    # - 10.0.0.20
+  # ports:
+    # - { name: http, port: 9999, targetPort: 9999 }
+
+# ---
+# # stashbox
+# apiVersion: v1
+# kind: Service
+# metadata:
+  # name: stashbox
+  # namespace: media
+# spec:
+  # type: ClusterIP
+  # selector: { app: stashbox }
+  # externalIPs:
+    # - 10.0.0.16
+    # - 10.0.0.20
+  # ports:
+    # - { name: http, port: 9998, targetPort: 9998 }
+
+
+# ---
+# # ========= avradarr =========
+# apiVersion: v1
+# kind: Service
+# metadata:
+  # name: avradarr
+  # namespace: media
+# spec:
+  # type: ClusterIP
+  # selector:
+    # app: avradarr
+  # externalIPs:
+    # - 10.0.0.16
+    # - 10.0.0.20
+  # ports:
+    # - name: http
+      # port: 8989
+      # targetPort: 8989
 
 
