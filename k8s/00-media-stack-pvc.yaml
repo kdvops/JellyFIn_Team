@@ -164,6 +164,18 @@ spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: stashbox-config-pvc
+  namespace: media
+spec:
+  accessModes: ["ReadWriteMany"]
+  resources: { requests: { storage: 1Gi } }
+  storageClassName: longhorn
+
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
