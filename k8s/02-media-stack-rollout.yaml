@@ -310,7 +310,7 @@ spec:
         - { name: media, persistentVolumeClaim: { claimName: media-pvc } } 
 
 ---
-# stashX
+# stashbox
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
@@ -346,3 +346,44 @@ spec:
       volumes:
         - { name: cfg,   persistentVolumeClaim: { claimName: stashbox-config-pvc } }
         - { name: media, persistentVolumeClaim: { claimName: media-pvc } } 
+
+---
+# avradarr
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: avradarr
+  namespace: media
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: avradarr } }
+  strategy:
+    canary:
+      steps:
+        - setWeight: 50
+        - pause: { duration: 30s }
+        - setWeight: 100
+        - pause: { duration: 10s }
+  template:
+    metadata: { labels: { app: avradarr } }
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: rasppi516
+      containers:
+        - name: avradarr
+          image: docker.io/njimenez/avnzarr:latest
+          env:
+            - { name: PUID, value: "1000" }
+            - { name: PGID, value: "1000" }
+            - { name: TZ, value: "America/Santo_Domingo" }
+          ports:
+            - { containerPort: 6767, name: http }
+          volumeMounts:
+            - { name: cfg,   mountPath: /config }
+            - { name: media, mountPath: /data/media }
+      volumes:
+        - { name: cfg,   persistentVolumeClaim: { claimName: avradarr-config-pvc } }
+        - { name: media, persistentVolumeClaim: { claimName: media-pvc } } 
+
+
+
