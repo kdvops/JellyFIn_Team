@@ -22,7 +22,7 @@ spec:
         kubernetes.io/hostname: rasppi516
       containers:
         - name: jellyfin
-          image: lscr.io/linuxserver/jellyfin:latest
+          image: lscr.io/linuxserver/jellyfin:lates1
           env:
             - { name: PUID, value: "1000" }
             - { name: PGID, value: "1000" }
