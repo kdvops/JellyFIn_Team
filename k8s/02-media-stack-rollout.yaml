@@ -272,7 +272,7 @@ spec:
         - { name: media, persistentVolumeClaim: { claimName: media-pvc } }
 
 ---
-# Bazarr
+# stash
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
@@ -307,4 +307,42 @@ spec:
             - { name: media, mountPath: /data/media }
       volumes:
         - { name: cfg,   persistentVolumeClaim: { claimName: stash-config-pvc } }
+        - { name: media, persistentVolumeClaim: { claimName: media-pvc } } 
+
+---
+# stashX
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: stashbox
+  namespace: media
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: stashbox } }
+  strategy:
+    canary:
+      steps:
+        - setWeight: 50
+        - pause: { duration: 30s }
+        - setWeight: 100
+        - pause: { duration: 10s }
+  template:
+    metadata: { labels: { app: stashbox } }
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: rasppi516
+      containers:
+        - name: stashbox
+          image: ghcr.io/stashapp/stash-box:latest
+          env:
+            - { name: PUID, value: "1000" }
+            - { name: PGID, value: "1000" }
+            - { name: TZ, value: "America/Santo_Domingo" }
+          ports:
+            - { containerPort: 6767, name: http }
+          volumeMounts:
+            - { name: cfg,   mountPath: /config }
+            - { name: media, mountPath: /data/media }
+      volumes:
+        - { name: cfg,   persistentVolumeClaim: { claimName: stashbox-config-pvc } }
         - { name: media, persistentVolumeClaim: { claimName: media-pvc } } 
