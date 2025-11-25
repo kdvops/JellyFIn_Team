@@ -38,7 +38,7 @@ spec:
         - { name: cfg2,  persistentVolumeClaim: { claimName: jellyfin-config-pvc } }
         - { name: media, persistentVolumeClaim: { claimName: media-pvc } }
 
-# Jellyfin
+# jellyseerr
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
