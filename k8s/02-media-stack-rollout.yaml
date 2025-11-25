@@ -333,7 +333,7 @@ spec:
         kubernetes.io/hostname: rasppi516
       containers:
         - name: stashbox
-          image: ghcr.io/stashapp/stash-box:latest
+          image: stashapp/stash-box:latest
           env:
             - { name: PUID, value: "1000" }
             - { name: PGID, value: "1000" }
