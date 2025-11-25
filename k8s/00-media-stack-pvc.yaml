@@ -36,6 +36,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: media-pvc
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Skip=true
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 500Gi } }
@@ -47,6 +49,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: jellyfin-config-pvc
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Skip=true
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 10Gi } }
@@ -59,6 +63,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: jellyfin-config-pv
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Skip=true
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 3Gi } }
@@ -70,6 +76,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: qbittorrent-config-pvc
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Skip=true
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -80,6 +88,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: prowlarr-config-pvc
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Skip=true
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -90,6 +100,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: sonarr-config-pvc
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Skip=true
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -100,6 +112,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: radarr-config-pvc
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Skip=true
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -110,6 +124,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: readarr-config-pvc
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Skip=true
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -120,6 +136,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: bazarr-config-pvc
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Skip=true
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -130,6 +148,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: jellyseerr-config-pvc
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Skip=true
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -140,6 +160,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: lidarr-config-pvc
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Skip=true
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -150,6 +172,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: ombi-config-pvc
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Skip=true
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -160,6 +184,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: stash-config-pvc
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Skip=true
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -171,6 +197,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: stashbox-config-pvc
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Skip=true
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -182,6 +210,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: whisparr-config-pvc
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Skip=true
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -192,6 +222,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: whisper-config-pvc
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Skip=true
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -202,6 +234,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: mylar-config-pvc
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Skip=true
 spec:
   accessModes: ["ReadWriteMany"]
   resources:
@@ -215,6 +249,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: avradarr-config-pvc
   namespace: media
+  annotations:
+    argocd.argoproj.io/sync-options: Skip=true
 spec:
   accessModes: ["ReadWriteMany"]
   resources:
