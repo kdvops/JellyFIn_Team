@@ -178,31 +178,31 @@ spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: stash-config-pvc
-  namespace: media
-  annotations:
-    argocd.argoproj.io/sync-options: Skip=true
-spec:
-  accessModes: ["ReadWriteMany"]
-  resources: { requests: { storage: 1Gi } }
-  storageClassName: longhorn
+#---
+#apiVersion: v1
+#kind: PersistentVolumeClaim
+#metadata:
+#  name: stash-config-pvc
+#  namespace: media
+#  annotations:
+#    argocd.argoproj.io/sync-options: Skip=true
+#spec:
+#  accessModes: ["ReadWriteMany"]
+#  resources: { requests: { storage: 1Gi } }
+#  storageClassName: longhorn
 
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: stashbox-config-pvc
-  namespace: media
-  annotations:
-    argocd.argoproj.io/sync-options: Skip=true
-spec:
-  accessModes: ["ReadWriteMany"]
-  resources: { requests: { storage: 1Gi } }
-  storageClassName: longhorn
+#---
+#apiVersion: v1
+#kind: PersistentVolumeClaim
+#metadata:
+#  name: stashbox-config-pvc
+#  namespace: media
+#  annotations:
+#    argocd.argoproj.io/sync-options: Skip=true
+#spec:
+#  accessModes: ["ReadWriteMany"]
+#  resources: { requests: { storage: 1Gi } }
+#  storageClassName: longhorn
 
 ---
 apiVersion: v1
@@ -243,18 +243,18 @@ spec:
       storage: 1Gi
   storageClassName: longhorn
 
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: avradarr-config-pvc
-  namespace: media
-  annotations:
-    argocd.argoproj.io/sync-options: Skip=true
-spec:
-  accessModes: ["ReadWriteMany"]
-  resources:
-    requests:
-      storage: 1Gi
-  storageClassName: longhorn
+#---
+#apiVersion: v1
+#kind: PersistentVolumeClaim
+#metadata:
+#  name: avradarr-config-pvc
+#  namespace: media
+#  annotations:
+#    argocd.argoproj.io/sync-options: Skip=true
+#spec:
+#  accessModes: ["ReadWriteMany"]
+#  resources:
+#    requests:
+#      storage: 1Gi
+#  storageClassName: longhorn
 
