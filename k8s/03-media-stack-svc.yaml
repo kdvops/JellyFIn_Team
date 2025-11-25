@@ -185,6 +185,24 @@ spec:
     - 10.0.0.20
   ports:
     - { name: http, port: 9999, targetPort: 9999 }
+
+---
+# stashbox
+apiVersion: v1
+kind: Service
+metadata:
+  name: stashbox
+  namespace: media
+spec:
+  type: ClusterIP
+  selector: { app: stashbox }
+  externalIPs:
+    - 10.0.0.16
+    - 10.0.0.20
+  ports:
+    - { name: http, port: 9998, targetPort: 9998 }
+
+
 ---
 # ========= Mylar =========
 apiVersion: v1
