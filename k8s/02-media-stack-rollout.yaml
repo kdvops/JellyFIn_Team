@@ -270,3 +270,41 @@ spec:
       volumes:
         - { name: cfg,   persistentVolumeClaim: { claimName: bazarr-config-pvc } }
         - { name: media, persistentVolumeClaim: { claimName: media-pvc } }
+
+---
+# Bazarr
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: stash
+  namespace: media
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: stash } }
+  strategy:
+    canary:
+      steps:
+        - setWeight: 50
+        - pause: { duration: 30s }
+        - setWeight: 100
+        - pause: { duration: 10s }
+  template:
+    metadata: { labels: { app: stash } }
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: rasppi516
+      containers:
+        - name: stash
+          image: stashapp/stash:latest
+          env:
+            - { name: PUID, value: "1000" }
+            - { name: PGID, value: "1000" }
+            - { name: TZ, value: "America/Santo_Domingo" }
+          ports:
+            - { containerPort: 6767, name: http }
+          volumeMounts:
+            - { name: cfg,   mountPath: /root/.stash }
+            - { name: media, mountPath: /data/media }
+      volumes:
+        - { name: cfg,   persistentVolumeClaim: { claimName: stash-config-pvc } }
+        - { name: media, persistentVolumeClaim: { claimName: media-pvc } } 
