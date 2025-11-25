@@ -271,56 +271,6 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: stash
-  namespace: media
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: stash.kdvops.com
-    external-dns.alpha.kubernetes.io/ttl: "120"
-    # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
-    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
-spec:
-  ingressClassName: traefik
-  rules:
-  - host: stash.kdvops.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: stash
-            port:
-              number: 9999
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: stashbox
-  namespace: media
-  annotations:
-    external-dns.alpha.kubernetes.io/hostname: stashbox.kdvops.com
-    external-dns.alpha.kubernetes.io/ttl: "120"
-    # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
-    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
-spec:
-  ingressClassName: traefik
-  rules:
-  - host: stashbox.kdvops.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: stashbox
-            port:
-              number: 9998
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
   name: whisparr
   namespace: media
   annotations:
@@ -396,31 +346,82 @@ spec:
            port:
              number: 8090
 
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
- name: avradarr
- namespace: media
- annotations:
-   external-dns.alpha.kubernetes.io/hostname: avradarr.kdvops.com
-   external-dns.alpha.kubernetes.io/ttl: "120"
-    #OPCIONAL: si quieres forzar un CNAME en lugar de A:
-   external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
-   external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+  # name: stash
+  # namespace: media
+  # annotations:
+    # external-dns.alpha.kubernetes.io/hostname: stash.kdvops.com
+    # external-dns.alpha.kubernetes.io/ttl: "120"
+    # # OPCIONAL: si quieres forzar un CNAME en lugar de A:
+    # external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
+    # external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+# spec:
+  # ingressClassName: traefik
+  # rules:
+  # - host: stash.kdvops.com
+    # http:
+      # paths:
+      # - path: /
+        # pathType: Prefix
+        # backend:
+          # service:
+            # name: stash
+            # port:
+              # number: 9999
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+  # name: stashbox
+  # namespace: media
+  # annotations:
+    # external-dns.alpha.kubernetes.io/hostname: stashbox.kdvops.com
+    # external-dns.alpha.kubernetes.io/ttl: "120"
+    # # OPCIONAL: si quieres forzar un CNAME en lugar de A:
+    # external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
+    # external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+# spec:
+  # ingressClassName: traefik
+  # rules:
+  # - host: stashbox.kdvops.com
+    # http:
+      # paths:
+      # - path: /
+        # pathType: Prefix
+        # backend:
+          # service:
+            # name: stashbox
+            # port:
+              # number: 9998
 
-spec:
- ingressClassName: traefik
- rules:
- - host: avradarr.kdvops.com
-   http:
-     paths:
-     - path: /
-       pathType: Prefix
-       backend:
-         service:
-           name: avradarr
-           port:
-             number: 8989
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+ # name: avradarr
+ # namespace: media
+ # annotations:
+   # external-dns.alpha.kubernetes.io/hostname: avradarr.kdvops.com
+   # external-dns.alpha.kubernetes.io/ttl: "120"
+    # #OPCIONAL: si quieres forzar un CNAME en lugar de A:
+   # external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
+   # external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+
+# spec:
+ # ingressClassName: traefik
+ # rules:
+ # - host: avradarr.kdvops.com
+   # http:
+     # paths:
+     # - path: /
+       # pathType: Prefix
+       # backend:
+         # service:
+           # name: avradarr
+           # port:
+             # number: 8989
 
 
