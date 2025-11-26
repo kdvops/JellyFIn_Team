@@ -37,18 +37,14 @@ metadata:
   name: media-pvc
   namespace: media
   annotations:
-      # ==== ArgoCD ====
+    #argocd.argoproj.io/sync-options: Skip=true
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
         - /metadata/annotations
-
-    # ==== Longhorn ====
-    volume.longhorn.io/node-selector: |
-      kubernetes.io/hostname: rasppi516
-    longhorn.io/replica-count: "1"spec:
+spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 500Gi } }
   storageClassName: longhorn
@@ -60,18 +56,13 @@ metadata:
   name: jellyfin-config-pvc
   namespace: media
   annotations:
-      # ==== ArgoCD ====
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
         - /metadata/annotations
-
-    # ==== Longhorn ====
-    volume.longhorn.io/node-selector: |
-      kubernetes.io/hostname: rasppi516
-    longhorn.io/replica-count: "1"spec:
+spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 10Gi } }
   storageClassName: longhorn
@@ -84,18 +75,13 @@ metadata:
   name: qbittorrent-config-pvc
   namespace: media
   annotations:
-      # ==== ArgoCD ====
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
         - /metadata/annotations
-
-    # ==== Longhorn ====
-    volume.longhorn.io/node-selector: |
-      kubernetes.io/hostname: rasppi516
-    longhorn.io/replica-count: "1"spec:
+spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
@@ -106,18 +92,13 @@ metadata:
   name: prowlarr-config-pvc
   namespace: media
   annotations:
-      # ==== ArgoCD ====
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
         - /metadata/annotations
-
-    # ==== Longhorn ====
-    volume.longhorn.io/node-selector: |
-      kubernetes.io/hostname: rasppi516
-    longhorn.io/replica-count: "1"spec:
+spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
@@ -128,18 +109,13 @@ metadata:
   name: sonarr-config-pvc
   namespace: media
   annotations:
-      # ==== ArgoCD ====
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
         - /metadata/annotations
-
-    # ==== Longhorn ====
-    volume.longhorn.io/node-selector: |
-      kubernetes.io/hostname: rasppi516
-    longhorn.io/replica-count: "1"spec:
+spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
@@ -150,18 +126,13 @@ metadata:
   name: radarr-config-pvc
   namespace: media
   annotations:
-      # ==== ArgoCD ====
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
         - /metadata/annotations
-
-    # ==== Longhorn ====
-    volume.longhorn.io/node-selector: |
-      kubernetes.io/hostname: rasppi516
-    longhorn.io/replica-count: "1"spec:
+spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
@@ -172,18 +143,13 @@ metadata:
   name: readarr-config-pvc
   namespace: media
   annotations:
-      # ==== ArgoCD ====
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
         - /metadata/annotations
-
-    # ==== Longhorn ====
-    volume.longhorn.io/node-selector: |
-      kubernetes.io/hostname: rasppi516
-    longhorn.io/replica-count: "1"spec:
+spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
@@ -194,18 +160,13 @@ metadata:
   name: bazarr-config-pvc
   namespace: media
   annotations:
-      # ==== ArgoCD ====
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
         - /metadata/annotations
-
-    # ==== Longhorn ====
-    volume.longhorn.io/node-selector: |
-      kubernetes.io/hostname: rasppi516
-    longhorn.io/replica-count: "1"spec:
+spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
@@ -216,18 +177,13 @@ metadata:
   name: jellyseerr-config-pvc
   namespace: media
   annotations:
-      # ==== ArgoCD ====
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
         - /metadata/annotations
-
-    # ==== Longhorn ====
-    volume.longhorn.io/node-selector: |
-      kubernetes.io/hostname: rasppi516
-    longhorn.io/replica-count: "1"spec:
+spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
@@ -238,18 +194,13 @@ metadata:
   name: lidarr-config-pvc
   namespace: media
   annotations:
-      # ==== ArgoCD ====
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
         - /metadata/annotations
-
-    # ==== Longhorn ====
-    volume.longhorn.io/node-selector: |
-      kubernetes.io/hostname: rasppi516
-    longhorn.io/replica-count: "1"spec:
+spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
@@ -260,18 +211,13 @@ metadata:
   name: ombi-config-pvc
   namespace: media
   annotations:
-      # ==== ArgoCD ====
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
         - /metadata/annotations
-
-    # ==== Longhorn ====
-    volume.longhorn.io/node-selector: |
-      kubernetes.io/hostname: rasppi516
-    longhorn.io/replica-count: "1"spec:
+spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
@@ -282,19 +228,13 @@ metadata:
 #  name: stash-config-pvc
 #  namespace: media
 #  annotations:
-#  annotations:
-    # ==== ArgoCD ====
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
+#    argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
         - /metadata/annotations
-
-    # ==== Longhorn ====
-    volume.longhorn.io/node-selector: |
-      kubernetes.io/hostname: rasppi516
-    longhorn.io/replica-count: "1"#spec:
+#spec:
 #  accessModes: ["ReadWriteMany"]
 #  resources: { requests: { storage: 1Gi } }
 #  storageClassName: longhorn
@@ -306,19 +246,13 @@ metadata:
 #  name: stashbox-config-pvc
 #  namespace: media
 #  annotations:
-#  annotations:
-    # ==== ArgoCD ====
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
+#    argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
         - /metadata/annotations
-
-    # ==== Longhorn ====
-    volume.longhorn.io/node-selector: |
-      kubernetes.io/hostname: rasppi516
-    longhorn.io/replica-count: "1"#spec:
+#spec:
 #  accessModes: ["ReadWriteMany"]
 #  resources: { requests: { storage: 1Gi } }
 #  storageClassName: longhorn
@@ -330,18 +264,13 @@ metadata:
   name: whisparr-config-pvc
   namespace: media
   annotations:
-      # ==== ArgoCD ====
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
         - /metadata/annotations
-
-    # ==== Longhorn ====
-    volume.longhorn.io/node-selector: |
-      kubernetes.io/hostname: rasppi516
-    longhorn.io/replica-count: "1"spec:
+spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
@@ -352,18 +281,13 @@ metadata:
   name: whisper-config-pvc
   namespace: media
   annotations:
-      # ==== ArgoCD ====
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
         - /metadata/annotations
-
-    # ==== Longhorn ====
-    volume.longhorn.io/node-selector: |
-      kubernetes.io/hostname: rasppi516
-    longhorn.io/replica-count: "1"spec:
+spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
@@ -374,18 +298,13 @@ metadata:
   name: mylar-config-pvc
   namespace: media
   annotations:
-      # ==== ArgoCD ====
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
         - /metadata/annotations
-
-    # ==== Longhorn ====
-    volume.longhorn.io/node-selector: |
-      kubernetes.io/hostname: rasppi516
-    longhorn.io/replica-count: "1"spec:
+spec:
   accessModes: ["ReadWriteMany"]
   resources:
     requests:
@@ -399,19 +318,13 @@ metadata:
 #  name: avradarr-config-pvc
 #  namespace: media
 #  annotations:
-#  annotations:
-    # ==== ArgoCD ====
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
+#    argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
         - /metadata/annotations
-
-    # ==== Longhorn ====
-    volume.longhorn.io/node-selector: |
-      kubernetes.io/hostname: rasppi516
-    longhorn.io/replica-count: "1"#spec:
+#spec:
 #  accessModes: ["ReadWriteMany"]
 #  resources:
 #    requests:
