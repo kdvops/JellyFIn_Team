@@ -38,8 +38,7 @@ metadata:
   namespace: media
   annotations:
     #argocd.argoproj.io/sync-options: Skip=true
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+
 
 spec:
   accessModes: ["ReadWriteMany"]
@@ -53,8 +52,7 @@ metadata:
   name: jellyfin-config-pvc
   namespace: media
   annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+
 
 spec:
   accessModes: ["ReadWriteMany"]
@@ -69,8 +67,7 @@ metadata:
   name: qbittorrent-config-pvc
   namespace: media
   annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+
 
 spec:
   accessModes: ["ReadWriteMany"]
@@ -83,8 +80,7 @@ metadata:
   name: prowlarr-config-pvc
   namespace: media
   annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+
 
 spec:
   accessModes: ["ReadWriteMany"]
@@ -97,8 +93,7 @@ metadata:
   name: sonarr-config-pvc
   namespace: media
   annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+
 
 spec:
   accessModes: ["ReadWriteMany"]
@@ -111,8 +106,7 @@ metadata:
   name: radarr-config-pvc
   namespace: media
   annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+
 
 spec:
   accessModes: ["ReadWriteMany"]
@@ -125,8 +119,7 @@ metadata:
   name: readarr-config-pvc
   namespace: media
   annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+
 
 spec:
   accessModes: ["ReadWriteMany"]
@@ -139,8 +132,7 @@ metadata:
   name: bazarr-config-pvc
   namespace: media
   annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+
 
 spec:
   accessModes: ["ReadWriteMany"]
@@ -153,8 +145,7 @@ metadata:
   name: jellyseerr-config-pvc
   namespace: media
   annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+
 
 spec:
   accessModes: ["ReadWriteMany"]
@@ -167,8 +158,7 @@ metadata:
   name: lidarr-config-pvc
   namespace: media
   annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+
 
 spec:
   accessModes: ["ReadWriteMany"]
@@ -181,8 +171,7 @@ metadata:
   name: ombi-config-pvc
   namespace: media
   annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+
 
 spec:
   accessModes: ["ReadWriteMany"]
@@ -195,8 +184,7 @@ spec:
 #  name: stash-config-pvc
 #  namespace: media
 #  annotations:
-#    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+#
 
 #spec:
 #  accessModes: ["ReadWriteMany"]
@@ -210,8 +198,7 @@ spec:
 #  name: stashbox-config-pvc
 #  namespace: media
 #  annotations:
-#    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+#
 
 #spec:
 #  accessModes: ["ReadWriteMany"]
@@ -225,8 +212,7 @@ metadata:
   name: whisparr-config-pvc
   namespace: media
   annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+
 
 spec:
   accessModes: ["ReadWriteMany"]
@@ -239,8 +225,7 @@ metadata:
   name: whisper-config-pvc
   namespace: media
   annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+
 
 spec:
   accessModes: ["ReadWriteMany"]
@@ -253,8 +238,7 @@ metadata:
   name: mylar-config-pvc
   namespace: media
   annotations:
-    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+
 
 spec:
   accessModes: ["ReadWriteMany"]
@@ -270,8 +254,7 @@ spec:
 #  name: avradarr-config-pvc
 #  namespace: media
 #  annotations:
-#    argocd.argoproj.io/compare-options: IgnoreExtraneous
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+#
 
 #spec:
 #  accessModes: ["ReadWriteMany"]
