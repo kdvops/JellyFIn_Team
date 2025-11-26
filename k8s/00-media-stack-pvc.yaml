@@ -38,8 +38,6 @@ metadata:
   namespace: media
   annotations:
     argocd.argoproj.io/sync-options: Skip=false
-    volume.longhorn.io/node-selector: |
-      kubernetes.io/hostname: rasppi516
     #argocd.argoproj.io/compare-options: IgnoreExtraneous
     #argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
 
