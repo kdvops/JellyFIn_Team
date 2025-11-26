@@ -22,7 +22,7 @@ spec:
         kubernetes.io/hostname: rasppi516
       containers:
         - name: jellyfin
-          image: lscr.io/linuxserver/jellyfin:lates1
+          image: lscr.io/linuxserver/jellyfin:latest
           env:
             - { name: PUID, value: "1000" }
             - { name: PGID, value: "1000" }
@@ -65,7 +65,7 @@ spec:
             - { name: PGID, value: "1000" }
             - { name: TZ, value: "America/Santo_Domingo" }
           ports:
-            - { containerPort: 8096, name: http }
+            - { containerPort: 5055, name: http }
           volumeMounts:
             - { name: cfg, mountPath: /app/config }
             - { name: media, mountPath: /data/media }
