@@ -40,6 +40,10 @@ metadata:
     #argocd.argoproj.io/sync-options: Skip=true
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
+    longhorn.io/replica-count: "1"
+
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
@@ -58,6 +62,10 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
+    longhorn.io/replica-count: "1"
+
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
@@ -77,6 +85,10 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
+    longhorn.io/replica-count: "1"
+
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
@@ -94,6 +106,10 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
+    longhorn.io/replica-count: "1"
+
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
@@ -111,6 +127,10 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
+    longhorn.io/replica-count: "1"
+
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
@@ -128,6 +148,10 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
+    longhorn.io/replica-count: "1"
+
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
@@ -145,6 +169,10 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
+    longhorn.io/replica-count: "1"
+
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
@@ -162,6 +190,10 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
+    longhorn.io/replica-count: "1"
+
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
@@ -179,6 +211,10 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
+    longhorn.io/replica-count: "1"
+
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
@@ -196,6 +232,10 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
+    longhorn.io/replica-count: "1"
+
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
@@ -213,6 +253,10 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
+    longhorn.io/replica-count: "1"
+
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
@@ -230,6 +274,10 @@ spec:
 #  annotations:
 #    argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
+    longhorn.io/replica-count: "1"
+
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
@@ -248,6 +296,10 @@ spec:
 #  annotations:
 #    argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
+    longhorn.io/replica-count: "1"
+
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
@@ -266,6 +318,10 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
+    longhorn.io/replica-count: "1"
+
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
@@ -283,6 +339,10 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
+    longhorn.io/replica-count: "1"
+
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
@@ -300,6 +360,10 @@ metadata:
   annotations:
     argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
+    longhorn.io/replica-count: "1"
+
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
@@ -320,6 +384,10 @@ spec:
 #  annotations:
 #    argocd.argoproj.io/compare-options: IgnoreExtraneous
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
+    longhorn.io/replica-count: "1"
+
     argocd.argoproj.io/ignore-differences: |
       jsonPointers:
         - /status
