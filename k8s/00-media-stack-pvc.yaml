@@ -38,8 +38,9 @@ metadata:
   namespace: media
   annotations:
     argocd.argoproj.io/sync-options: Skip=true
-    #argocd.argoproj.io/compare-options: IgnoreExtraneous
     #argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 500Gi } }
@@ -53,8 +54,9 @@ metadata:
   namespace: media
   annotations:
     argocd.argoproj.io/sync-options: Skip=true
-    #argocd.argoproj.io/compare-options: IgnoreExtraneous
     #argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 10Gi } }
@@ -69,8 +71,9 @@ metadata:
   namespace: media
   annotations:
     argocd.argoproj.io/sync-options: Skip=true
-    #argocd.argoproj.io/compare-options: IgnoreExtraneous
     #argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -83,8 +86,9 @@ metadata:
   namespace: media
   annotations:
     argocd.argoproj.io/sync-options: Skip=true
-    #argocd.argoproj.io/compare-options: IgnoreExtraneous
     #argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -97,8 +101,9 @@ metadata:
   namespace: media
   annotations:
     argocd.argoproj.io/sync-options: Skip=true
-    #argocd.argoproj.io/compare-options: IgnoreExtraneous
     #argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -111,8 +116,9 @@ metadata:
   namespace: media
   annotations:
     argocd.argoproj.io/sync-options: Skip=true
-    #argocd.argoproj.io/compare-options: IgnoreExtraneous
     #argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -125,8 +131,9 @@ metadata:
   namespace: media
   annotations:
     argocd.argoproj.io/sync-options: Skip=true
-    #argocd.argoproj.io/compare-options: IgnoreExtraneous
     #argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -139,8 +146,9 @@ metadata:
   namespace: media
   annotations:
     argocd.argoproj.io/sync-options: Skip=true
-    #argocd.argoproj.io/compare-options: IgnoreExtraneous
     #argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -153,8 +161,9 @@ metadata:
   namespace: media
   annotations:
     argocd.argoproj.io/sync-options: Skip=true
-    #argocd.argoproj.io/compare-options: IgnoreExtraneous
     #argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -167,8 +176,9 @@ metadata:
   namespace: media
   annotations:
     argocd.argoproj.io/sync-options: Skip=true
-    #argocd.argoproj.io/compare-options: IgnoreExtraneous
     #argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -181,8 +191,9 @@ metadata:
   namespace: media
   annotations:
     argocd.argoproj.io/sync-options: Skip=true
-    #argocd.argoproj.io/compare-options: IgnoreExtraneous
     #argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -195,8 +206,9 @@ spec:
 #  namespace: media
 #  annotations:
 #    argocd.argoproj.io/sync-options: Skip=true
-    #argocd.argoproj.io/compare-options: IgnoreExtraneous
     #argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
 #spec:
 #  accessModes: ["ReadWriteMany"]
 #  resources: { requests: { storage: 1Gi } }
@@ -210,8 +222,9 @@ spec:
 #  namespace: media
 #  annotations:
 #    argocd.argoproj.io/sync-options: Skip=true
-    #argocd.argoproj.io/compare-options: IgnoreExtraneous
     #argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
 #spec:
 #  accessModes: ["ReadWriteMany"]
 #  resources: { requests: { storage: 1Gi } }
@@ -225,8 +238,9 @@ metadata:
   namespace: media
   annotations:
     argocd.argoproj.io/sync-options: Skip=true
-    #argocd.argoproj.io/compare-options: IgnoreExtraneous
     #argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -239,8 +253,9 @@ metadata:
   namespace: media
   annotations:
     argocd.argoproj.io/sync-options: Skip=true
-    #argocd.argoproj.io/compare-options: IgnoreExtraneous
     #argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
@@ -253,8 +268,9 @@ metadata:
   namespace: media
   annotations:
     argocd.argoproj.io/sync-options: Skip=true
-    #argocd.argoproj.io/compare-options: IgnoreExtraneous
     #argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
 spec:
   accessModes: ["ReadWriteMany"]
   resources:
@@ -270,8 +286,9 @@ spec:
 #  namespace: media
 #  annotations:
 #    argocd.argoproj.io/sync-options: Skip=true
-    #argocd.argoproj.io/compare-options: IgnoreExtraneous
     #argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource
+    volume.longhorn.io/node-selector: |
+      kubernetes.io/hostname: rasppi516
 #spec:
 #  accessModes: ["ReadWriteMany"]
 #  resources:
