@@ -115,41 +115,41 @@ spec:
         - { name: cfg,   persistentVolumeClaim: { claimName: qbittorrent-config-pvc } }
         - { name: media, persistentVolumeClaim: { claimName: media-pvc } }
 
----
-# Prowlarr
-apiVersion: argoproj.io/v1alpha1
-kind: Rollout
-metadata:
-  name: prowlarr
-  namespace: media
-spec:
-  replicas: 1
-  selector: { matchLabels: { app: prowlarr } }
-  strategy:
-    canary:
-      steps:
-        - setWeight: 50
-        - pause: { duration: 30s }
-        - setWeight: 100
-        - pause: { duration: 10s }
-  template:
-    metadata: { labels: { app: prowlarr } }
-    spec:
-      nodeSelector:
-        kubernetes.io/hostname: rasppi516
-      containers:
-        - name: prowlarr
-          image: lscr.io/linuxserver/prowlarr:latest
-          env:
-            - { name: PUID, value: "1000" }
-            - { name: PGID, value: "1000" }
-            - { name: TZ, value: "America/Santo_Domingo" }
-          ports:
-            - { containerPort: 9696, name: http }
-          volumeMounts:
-            - { name: cfg, mountPath: /config }
-      volumes:
-        - { name: cfg, persistentVolumeClaim: { claimName: prowlarr-config-pvc } }
+# ---
+# # Prowlarr
+# apiVersion: argoproj.io/v1alpha1
+# kind: Rollout
+# metadata:
+#   name: prowlarr
+#   namespace: media
+# spec:
+#   replicas: 1
+#   selector: { matchLabels: { app: prowlarr } }
+#   strategy:
+#     canary:
+#       steps:
+#         - setWeight: 50
+#         - pause: { duration: 30s }
+#         - setWeight: 100
+#         - pause: { duration: 10s }
+#   template:
+#     metadata: { labels: { app: prowlarr } }
+#     spec:
+#       nodeSelector:
+#         kubernetes.io/hostname: rasppi516
+#       containers:
+#         - name: prowlarr
+#           image: lscr.io/linuxserver/prowlarr:latest
+#           env:
+#             - { name: PUID, value: "1000" }
+#             - { name: PGID, value: "1000" }
+#             - { name: TZ, value: "America/Santo_Domingo" }
+#           ports:
+#             - { containerPort: 9696, name: http }
+#           volumeMounts:
+#             - { name: cfg, mountPath: /config }
+#       volumes:
+#         - { name: cfg, persistentVolumeClaim: { claimName: prowlarr-config-pvc } }
 
 ---
 # Sonarr
