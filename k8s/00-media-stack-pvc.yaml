@@ -29,7 +29,7 @@ metadata:
   # storageClassName: ""
   # volumeName: pv-media-hostpath
 # ---
-# ========= PVCs con longhorn-rasppi516 =========
+# ========= PVCs con longhorn =========
 # Datos compartidos (RWX)
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -61,9 +61,10 @@ metadata:
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 10Gi } }
-  storageClassName: longhorn-rasppi516
+  storageClassName: longhorn
   #volumeName: jellyfin-config-pvc
-
+  nodeSelector:
+    longhorn.io/node: rasppi516
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -77,7 +78,9 @@ metadata:
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
-  storageClassName: longhorn-rasppi516
+  storageClassName: longhorn
+  nodeSelector:
+    longhorn.io/node: rasppi516
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -91,7 +94,9 @@ metadata:
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
-  storageClassName: longhorn-rasppi516
+  storageClassName: longhorn
+  nodeSelector:
+    longhorn.io/node: rasppi516
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -105,7 +110,9 @@ metadata:
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
-  storageClassName: longhorn-rasppi516
+  storageClassName: longhorn
+  nodeSelector:
+    longhorn.io/node: rasppi516
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -119,7 +126,9 @@ metadata:
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
-  storageClassName: longhorn-rasppi516
+  storageClassName: longhorn
+  nodeSelector:
+    longhorn.io/node: rasppi516
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -133,7 +142,9 @@ metadata:
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
-  storageClassName: longhorn-rasppi516
+  storageClassName: longhorn
+  nodeSelector:
+    longhorn.io/node: rasppi516
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -147,7 +158,9 @@ metadata:
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
-  storageClassName: longhorn-rasppi516
+  storageClassName: longhorn
+  nodeSelector:
+    longhorn.io/node: rasppi516
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -161,7 +174,9 @@ metadata:
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
-  storageClassName: longhorn-rasppi516
+  storageClassName: longhorn
+  nodeSelector:
+    longhorn.io/node: rasppi516
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -175,7 +190,9 @@ metadata:
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
-  storageClassName: longhorn-rasppi516
+  storageClassName: longhorn
+  nodeSelector:
+    longhorn.io/node: rasppi516
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -189,7 +206,9 @@ metadata:
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
-  storageClassName: longhorn-rasppi516
+  storageClassName: longhorn
+  nodeSelector:
+    longhorn.io/node: rasppi516
 #---
 #apiVersion: v1
 #kind: PersistentVolumeClaim
@@ -203,7 +222,7 @@ spec:
 #spec:
 #  accessModes: ["ReadWriteMany"]
 #  resources: { requests: { storage: 1Gi } }
-#  storageClassName: longhorn-rasppi516
+#  storageClassName: longhorn
 
 #---
 #apiVersion: v1
@@ -218,7 +237,7 @@ spec:
 #spec:
 #  accessModes: ["ReadWriteMany"]
 #  resources: { requests: { storage: 1Gi } }
-#  storageClassName: longhorn-rasppi516
+#  storageClassName: longhorn
 
 ---
 apiVersion: v1
@@ -233,7 +252,9 @@ metadata:
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
-  storageClassName: longhorn-rasppi516
+  storageClassName: longhorn
+  nodeSelector:
+    longhorn.io/node: rasppi516
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -247,7 +268,9 @@ metadata:
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
-  storageClassName: longhorn-rasppi516
+  storageClassName: longhorn
+  nodeSelector:
+    longhorn.io/node: rasppi516
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -263,8 +286,9 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  storageClassName: longhorn-rasppi516
-
+  storageClassName: longhorn
+  nodeSelector:
+    longhorn.io/node: rasppi516
 #---
 #apiVersion: v1
 #kind: PersistentVolumeClaim
@@ -280,5 +304,5 @@ spec:
 #  resources:
 #    requests:
 #      storage: 1Gi
-#  storageClassName: longhorn-rasppi516
+#  storageClassName: longhorn
 
