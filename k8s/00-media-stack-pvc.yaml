@@ -44,7 +44,7 @@ metadata:
 spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 500Gi } }
-  storageClassName: longhorn-rasppi516
+  storageClassName: longhorn
   nodeSelector:
     longhorn.io/node: rasppi516
 ---
