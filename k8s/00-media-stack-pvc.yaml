@@ -45,6 +45,8 @@ spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 500Gi } }
   storageClassName: longhorn-rasppi516
+  nodeSelector:
+    longhorn.io/node: rasppi516
 ---
 # Config (RWX)
 apiVersion: v1
