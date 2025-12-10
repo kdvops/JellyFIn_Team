@@ -7,7 +7,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: jellyfin.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
+    external-dns.alpha.kubernetes.io/target: "6cfa1402-18c1-4f26-ae92-68762856bd62.cfargotunnel.com"
     external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
@@ -37,7 +37,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: qbittorrent.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
+    external-dns.alpha.kubernetes.io/target: "6cfa1402-18c1-4f26-ae92-68762856bd62.cfargotunnel.com"
     external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
 spec:
   ingressClassName: traefik
@@ -62,7 +62,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: prowlarr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
+    external-dns.alpha.kubernetes.io/target: "6cfa1402-18c1-4f26-ae92-68762856bd62.cfargotunnel.com"
     external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
 spec:
   ingressClassName: traefik
@@ -87,7 +87,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: sonarr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
+    external-dns.alpha.kubernetes.io/target: "6cfa1402-18c1-4f26-ae92-68762856bd62.cfargotunnel.com"
     external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
 spec:
   ingressClassName: traefik
@@ -112,7 +112,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: radarr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
+    external-dns.alpha.kubernetes.io/target: "6cfa1402-18c1-4f26-ae92-68762856bd62.cfargotunnel.com"
     external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
 spec:
   ingressClassName: traefik
@@ -137,7 +137,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: readarr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
+    external-dns.alpha.kubernetes.io/target: "6cfa1402-18c1-4f26-ae92-68762856bd62.cfargotunnel.com"
     external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
@@ -167,7 +167,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: bazarr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
+    external-dns.alpha.kubernetes.io/target: "6cfa1402-18c1-4f26-ae92-68762856bd62.cfargotunnel.com"
     external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
 spec:
   ingressClassName: traefik
@@ -192,7 +192,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: jellyseerr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
+    external-dns.alpha.kubernetes.io/target: "6cfa1402-18c1-4f26-ae92-68762856bd62.cfargotunnel.com"
     external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
@@ -222,7 +222,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: lidarr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
+    external-dns.alpha.kubernetes.io/target: "6cfa1402-18c1-4f26-ae92-68762856bd62.cfargotunnel.com"
     external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
 spec:
   ingressClassName: traefik
@@ -247,7 +247,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: ombi.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
+    external-dns.alpha.kubernetes.io/target: "6cfa1402-18c1-4f26-ae92-68762856bd62.cfargotunnel.com"
     external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
@@ -277,7 +277,7 @@ metadata:
     external-dns.alpha.kubernetes.io/hostname: whisparr.kdvops.com
     external-dns.alpha.kubernetes.io/ttl: "120"
     # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
+    external-dns.alpha.kubernetes.io/target: "6cfa1402-18c1-4f26-ae92-68762856bd62.cfargotunnel.com"
     external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
 spec:
   ingressClassName: traefik
@@ -303,7 +303,7 @@ metadata:
    external-dns.alpha.kubernetes.io/hostname: whisper.kdvops.com
    external-dns.alpha.kubernetes.io/ttl: "120"
     #OPCIONAL: si quieres forzar un CNAME en lugar de A:
-   external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
+   external-dns.alpha.kubernetes.io/target: "6cfa1402-18c1-4f26-ae92-68762856bd62.cfargotunnel.com"
    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
 
 spec:
@@ -329,7 +329,7 @@ metadata:
    external-dns.alpha.kubernetes.io/hostname: mylar.kdvops.com
    external-dns.alpha.kubernetes.io/ttl: "120"
     #OPCIONAL: si quieres forzar un CNAME en lugar de A:
-   external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
+   external-dns.alpha.kubernetes.io/target: "6cfa1402-18c1-4f26-ae92-68762856bd62.cfargotunnel.com"
    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
 
 spec:
@@ -356,7 +356,7 @@ spec:
     # external-dns.alpha.kubernetes.io/hostname: stash.kdvops.com
     # external-dns.alpha.kubernetes.io/ttl: "120"
     # # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    # external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
+    # external-dns.alpha.kubernetes.io/target: "6cfa1402-18c1-4f26-ae92-68762856bd62.cfargotunnel.com"
     # external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
 # spec:
   # ingressClassName: traefik
@@ -381,7 +381,7 @@ spec:
     # external-dns.alpha.kubernetes.io/hostname: stashbox.kdvops.com
     # external-dns.alpha.kubernetes.io/ttl: "120"
     # # OPCIONAL: si quieres forzar un CNAME en lugar de A:
-    # external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
+    # external-dns.alpha.kubernetes.io/target: "6cfa1402-18c1-4f26-ae92-68762856bd62.cfargotunnel.com"
     # external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
 # spec:
   # ingressClassName: traefik
@@ -407,7 +407,7 @@ spec:
    # external-dns.alpha.kubernetes.io/hostname: avradarr.kdvops.com
    # external-dns.alpha.kubernetes.io/ttl: "120"
     # #OPCIONAL: si quieres forzar un CNAME en lugar de A:
-   # external-dns.alpha.kubernetes.io/target: "a2d4f6a8-70e6-42f4-a84c-6711b0dd7467.cfargotunnel.com"
+   # external-dns.alpha.kubernetes.io/target: "6cfa1402-18c1-4f26-ae92-68762856bd62.cfargotunnel.com"
    # external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
 
 # spec:
