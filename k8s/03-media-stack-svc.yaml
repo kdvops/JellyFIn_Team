@@ -8,9 +8,9 @@ metadata:
 spec:
   type: ClusterIP
   selector: { app: jellyfin }
-  externalIPs:
-    - 10.0.0.16
-    - 10.0.0.20
+  #externalIPs:
+  #  - 10.0.0.16
+  #  - 10.0.0.20
   ports:
     - { name: http, port: 8096, targetPort: 8096 }
 
@@ -24,9 +24,9 @@ metadata:
 spec:
   type: ClusterIP
   selector: { app: jellyseerr }
-  externalIPs:
-    - 10.0.0.16
-    - 10.0.0.20
+  #externalIPs:
+  #  - 10.0.0.16
+  #  - 10.0.0.20
   ports:
     - { name: http, port: 5055, targetPort: 5055 }
 ---
@@ -39,9 +39,9 @@ metadata:
 spec:
   type: ClusterIP
   selector: { app: qbittorrent }
-  externalIPs:
-    - 10.0.0.16
-    - 10.0.0.20
+  #externalIPs:
+  #  - 10.0.0.16
+  #  - 10.0.0.20
   ports:
     - { name: web,    port: 8080, targetPort: 8080 }
     - { name: bt-tcp, port: 6881, targetPort: 6881, protocol: TCP }
@@ -56,9 +56,9 @@ metadata:
 spec:
   type: ClusterIP
   selector: { app: prowlarr }
-  externalIPs:
-    - 10.0.0.16
-    - 10.0.0.20
+  #externalIPs:
+  #  - 10.0.0.16
+  #  - 10.0.0.20
   ports:
     - { name: http, port: 9696, targetPort: 9696 }
 ---
@@ -71,9 +71,9 @@ metadata:
 spec:
   type: ClusterIP
   selector: { app: sonarr }
-  externalIPs:
-    - 10.0.0.16
-    - 10.0.0.20
+  #externalIPs:
+  #  - 10.0.0.16
+  #  - 10.0.0.20
   ports:
     - { name: http, port: 8989, targetPort: 8989 }
 ---
@@ -86,9 +86,9 @@ metadata:
 spec:
   type: ClusterIP
   selector: { app: radarr }
-  externalIPs:
-    - 10.0.0.16
-    - 10.0.0.20
+  #externalIPs:
+  #  - 10.0.0.16
+  #  - 10.0.0.20
   ports:
     - { name: http, port: 7878, targetPort: 7878 }
 
@@ -103,9 +103,9 @@ metadata:
 spec:
   type: ClusterIP
   selector: { app: bazarr }
-  externalIPs:
-    - 10.0.0.16
-    - 10.0.0.20
+  #externalIPs:
+  #  - 10.0.0.16
+  #  - 10.0.0.20
   ports:
     - { name: http, port: 6767, targetPort: 6767 }
 
@@ -119,9 +119,9 @@ metadata:
 spec:
   type: ClusterIP
   selector: { app: lidarr }
-  externalIPs:
-    - 10.0.0.16
-    - 10.0.0.20
+  #externalIPs:
+  #  - 10.0.0.16
+  #  - 10.0.0.20
   ports:
     - { name: http, port: 8686, targetPort: 8686 }
 
@@ -135,7 +135,7 @@ spec:
 # spec:
   # type: ClusterIP
   # selector: { app: readarr }
-  # externalIPs:
+  # #externalIPs:
     # - 10.0.0.16
     # - 10.0.0.20
   # ports:
@@ -151,7 +151,7 @@ spec:
 # spec:
   # type: ClusterIP
   # selector: { app: ombi }
-  # externalIPs:
+  # #externalIPs:
     # - 10.0.0.16
     # - 10.0.0.20
   # ports:
@@ -166,7 +166,7 @@ spec:
 # spec:
   # type: ClusterIP
   # selector: { app: whisparr }
-  # externalIPs:
+  # #externalIPs:
     # - 10.0.0.16
     # - 10.0.0.20
   # ports:
@@ -186,7 +186,7 @@ spec:
   # type: ClusterIP
   # selector:
     # app: mylar
-  # externalIPs:
+  # #externalIPs:
     # - 10.0.0.16
     # - 10.0.0.20
   # ports:
@@ -204,7 +204,7 @@ spec:
 # spec:
   # type: ClusterIP
   # selector: { app: stash }
-  # externalIPs:
+  # #externalIPs:
     # - 10.0.0.16
     # - 10.0.0.20
   # ports:
@@ -220,7 +220,7 @@ spec:
 # spec:
   # type: ClusterIP
   # selector: { app: stashbox }
-  # externalIPs:
+  # #externalIPs:
     # - 10.0.0.16
     # - 10.0.0.20
   # ports:
@@ -238,7 +238,7 @@ spec:
   # type: ClusterIP
   # selector:
     # app: avradarr
-  # externalIPs:
+  # #externalIPs:
     # - 10.0.0.16
     # - 10.0.0.20
   # ports:
