@@ -43,3 +43,126 @@ spec:
         port:
           number: 5055
 
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: prowlarr-vs
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: prowlarr.kdvops.com
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+    external-dns.alpha.kubernetes.io/ttl: "120"
+    external-dns.alpha.kubernetes.io/target: "6cfa1402-18c1-4f26-ae92-68762856bd62.cfargotunnel.com"
+spec:
+  hosts:
+  - "prowlarr.kdvops.com"
+  gateways:
+  - istio-system/kdvops-gateway
+  http:
+  - route:
+    - destination:
+        host: prowlarr
+        port:
+          number: 9696
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: sonarr-vs
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: sonarr.kdvops.com
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+    external-dns.alpha.kubernetes.io/ttl: "120"
+    external-dns.alpha.kubernetes.io/target: "6cfa1402-18c1-4f26-ae92-68762856bd62.cfargotunnel.com"
+spec:
+  hosts:
+  - "sonarr.kdvops.com"
+  gateways:
+  - istio-system/kdvops-gateway
+  http:
+  - route:
+    - destination:
+        host: sonarr
+        port:
+          number: 8989
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: radarr-vs
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: radarr.kdvops.com
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+    external-dns.alpha.kubernetes.io/ttl: "120"
+    external-dns.alpha.kubernetes.io/target: "6cfa1402-18c1-4f26-ae92-68762856bd62.cfargotunnel.com"
+spec:
+  hosts:
+  - "radarr.kdvops.com"
+  gateways:
+  - istio-system/kdvops-gateway
+  http:
+  - route:
+    - destination:
+        host: radarr
+        port:
+          number: 7878
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: bazarr-vs
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: bazarr.kdvops.com
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+    external-dns.alpha.kubernetes.io/ttl: "120"
+    external-dns.alpha.kubernetes.io/target: "6cfa1402-18c1-4f26-ae92-68762856bd62.cfargotunnel.com"
+spec:
+  hosts:
+  - "bazarr.kdvops.com"
+  gateways:
+  - istio-system/kdvops-gateway
+  http:
+  - route:
+    - destination:
+        host: bazarr
+        port:
+          number: 6767
+
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: lidarr-vs
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: lidarr.kdvops.com
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+    external-dns.alpha.kubernetes.io/ttl: "120"
+    external-dns.alpha.kubernetes.io/target: "6cfa1402-18c1-4f26-ae92-68762856bd62.cfargotunnel.com"
+spec:
+  hosts:
+  - "lidarr.kdvops.com"
+  gateways:
+  - istio-system/kdvops-gateway
+  http:
+  - route:
+    - destination:
+        host: lidarr
+        port:
+          number: 8686
+
+
+
+
+
+
+
