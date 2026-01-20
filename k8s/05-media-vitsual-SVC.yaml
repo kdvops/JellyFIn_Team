@@ -41,5 +41,5 @@ spec:
     - destination:
         host: jellyseerr
         port:
-          number: 8096
+          number: 5055
 
