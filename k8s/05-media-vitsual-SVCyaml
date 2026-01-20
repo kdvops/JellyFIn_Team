@@ -1,0 +1,21 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: jellyfin-vs
+  namespace: media
+  annotations:
+    external-dns.alpha.kubernetes.io/hostname: jellyfin.kdvops.com
+    external-dns.alpha.kubernetes.io/cloudflare-proxied: "true"
+    external-dns.alpha.kubernetes.io/ttl: "120"
+    external-dns.alpha.kubernetes.io/target: "6cfa1402-18c1-4f26-ae92-68762856bd62.cfargotunnel.com"
+spec:
+  hosts:
+  - "jellyfin.kdvops.com"
+  gateways:
+  - istio-system/kdvops-gateway
+  http:
+  - route:
+    - destination:
+        host: jellyfin
+        port:
+          number: 8096
