@@ -45,8 +45,8 @@ spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 200Gi } }
   storageClassName: longhorn
-  nodeSelector:
-    longhorn.io/node: rasppi516
+  #nodeSelector:
+    #longhorn.io/node: rasppi516
 ---
 # Config (RWX)
 apiVersion: v1
@@ -63,8 +63,8 @@ spec:
   resources: { requests: { storage: 10Gi } }
   storageClassName: longhorn
   #volumeName: jellyfin-config-pvc
-  nodeSelector:
-    longhorn.io/node: rasppi516
+  #nodeSelector:
+    #longhorn.io/node: rasppi516
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -79,8 +79,8 @@ spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
-  nodeSelector:
-    longhorn.io/node: rasppi516
+  #nodeSelector:
+    #longhorn.io/node: rasppi516
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -95,8 +95,8 @@ spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
-  nodeSelector:
-    longhorn.io/node: rasppi516
+  #nodeSelector:
+    #longhorn.io/node: rasppi516
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -111,8 +111,8 @@ spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
-  nodeSelector:
-    longhorn.io/node: rasppi516
+  #nodeSelector:
+    #longhorn.io/node: rasppi516
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -127,8 +127,8 @@ spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
-  nodeSelector:
-    longhorn.io/node: rasppi516
+  #nodeSelector:
+    #longhorn.io/node: rasppi516
 # ---
 # apiVersion: v1
 # kind: PersistentVolumeClaim
@@ -143,8 +143,8 @@ spec:
   # accessModes: ["ReadWriteMany"]
   # resources: { requests: { storage: 1Gi } }
   # storageClassName: longhorn
-  # nodeSelector:
-    # longhorn.io/node: rasppi516
+  # #nodeSelector:
+    # #longhorn.io/node: rasppi516
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -159,8 +159,8 @@ spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
-  nodeSelector:
-    longhorn.io/node: rasppi516
+  #nodeSelector:
+    #longhorn.io/node: rasppi516
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -175,8 +175,8 @@ spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
-  nodeSelector:
-    longhorn.io/node: rasppi516
+  #nodeSelector:
+    #longhorn.io/node: rasppi516
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -191,8 +191,8 @@ spec:
   accessModes: ["ReadWriteMany"]
   resources: { requests: { storage: 1Gi } }
   storageClassName: longhorn
-  nodeSelector:
-    longhorn.io/node: rasppi516
+  #nodeSelector:
+    #longhorn.io/node: rasppi516
 # ---
 # apiVersion: v1
 # kind: PersistentVolumeClaim
@@ -207,8 +207,8 @@ spec:
   # accessModes: ["ReadWriteMany"]
   # resources: { requests: { storage: 1Gi } }
   # storageClassName: longhorn
-  # nodeSelector:
-    # longhorn.io/node: rasppi516
+  # #nodeSelector:
+    # #longhorn.io/node: rasppi516
 #---
 #apiVersion: v1
 #kind: PersistentVolumeClaim
@@ -253,8 +253,8 @@ spec:
   # accessModes: ["ReadWriteMany"]
   # resources: { requests: { storage: 1Gi } }
   # storageClassName: longhorn
-  # nodeSelector:
-    # longhorn.io/node: rasppi516
+  # #nodeSelector:
+    # #longhorn.io/node: rasppi516
 # ---
 # apiVersion: v1
 # kind: PersistentVolumeClaim
@@ -269,8 +269,8 @@ spec:
   # accessModes: ["ReadWriteMany"]
   # resources: { requests: { storage: 1Gi } }
   # storageClassName: longhorn
-  # nodeSelector:
-    # longhorn.io/node: rasppi516
+  # #nodeSelector:
+    # #longhorn.io/node: rasppi516
 # ---
 # apiVersion: v1
 # kind: PersistentVolumeClaim
@@ -287,8 +287,8 @@ spec:
     # requests:
       # storage: 1Gi
   # storageClassName: longhorn
-  # nodeSelector:
-    # longhorn.io/node: rasppi516
+  # #nodeSelector:
+    # #longhorn.io/node: rasppi516
 #---
 #apiVersion: v1
 #kind: PersistentVolumeClaim
