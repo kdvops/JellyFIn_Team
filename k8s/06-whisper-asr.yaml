@@ -1,0 +1,116 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: whisper-model-cache-pvc
+  namespace: media
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  # Cache reconstruible: una replica evita dejar este PVC degradado en el
+  # cluster de dos nodos.
+  storageClassName: longhorn-rasppi516
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: whisper-asr
+  namespace: media
+  labels:
+    app: whisper-asr
+spec:
+  replicas: 1
+  progressDeadlineSeconds: 1800
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: whisper-asr
+  template:
+    metadata:
+      labels:
+        app: whisper-asr
+    spec:
+      automountServiceAccountToken: false
+      nodeSelector:
+        kubernetes.io/hostname: rasppi516
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: whisper-asr
+          image: onerahmet/openai-whisper-asr-webservice@sha256:0616c3d5fc6924e9d59aa8a7a3a944fbe8f3a5d701e5fc1fa2ce5b933dfecb73
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop:
+                - ALL
+          env:
+            - { name: ASR_ENGINE, value: faster_whisper }
+            - { name: ASR_MODEL, value: tiny }
+            - { name: ASR_MODEL_PATH, value: /data/whisper }
+            - { name: ASR_DEVICE, value: cpu }
+            - { name: ASR_QUANTIZATION, value: int8 }
+            - { name: OMP_NUM_THREADS, value: "2" }
+            - { name: HOME, value: /tmp }
+          ports:
+            - { name: http, containerPort: 9000 }
+          startupProbe:
+            httpGet: { path: /docs, port: http }
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 90
+          readinessProbe:
+            # /asr bloquea el unico worker durante una transcripcion. Un
+            # chequeo TCP mantiene el endpoint disponible sin abortar trabajos.
+            tcpSocket: { port: http }
+            periodSeconds: 15
+            timeoutSeconds: 5
+            failureThreshold: 4
+          resources:
+            limits:
+              cpu: "2"
+              memory: 2Gi
+              ephemeral-storage: 4Gi
+            requests:
+              cpu: 250m
+              memory: 512Mi
+              ephemeral-storage: 2Gi
+          volumeMounts:
+            - name: model-cache
+              mountPath: /data/whisper
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: model-cache
+          persistentVolumeClaim:
+            claimName: whisper-model-cache-pvc
+        - name: tmp
+          emptyDir:
+            sizeLimit: 2Gi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: whisper-asr
+  namespace: media
+spec:
+  type: ClusterIP
+  selector:
+    app: whisper-asr
+  ports:
+    - name: http
+      port: 9000
+      targetPort: http

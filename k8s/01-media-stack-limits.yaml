@@ -9,8 +9,8 @@ spec:
   - type: Container
     # Máximo permitido por contenedor
     max:
-      cpu: "500m"
-      memory: "1Gi"
+      cpu: "2"
+      memory: "2Gi"
     # Requests mínimos por defecto (para que el Pod arranque con lo mínimo)
     defaultRequest:
       cpu: "50m"
