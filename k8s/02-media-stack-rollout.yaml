@@ -9,11 +9,8 @@ spec:
   selector: { matchLabels: { app: jellyfin } }
   strategy:
     canary:
-      steps:
-        - setWeight: 50
-        - pause: { duration: 10s }
-        - setWeight: 100
-        - pause: { duration: 10s }
+      maxSurge: 0
+      maxUnavailable: 1
   template:
     metadata: { labels: { app: jellyfin } }
     spec:
@@ -21,7 +18,7 @@ spec:
         kubernetes.io/hostname: rasppi516
       containers:
         - name: jellyfin
-          image: lscr.io/linuxserver/jellyfin:latest
+          image: lscr.io/linuxserver/jellyfin@sha256:90320cf7522a80ae4f343ace77fdcde173f1bf9dc579b9beaffe5bc76f3934e0
           env:
             - { name: PUID, value: "1000" }
             - { name: PGID, value: "1000" }
@@ -61,7 +58,7 @@ spec:
         fsGroupChangePolicy: OnRootMismatch
       containers:
         - name: jellyseerr
-          image: ghcr.io/seerr-team/seerr@sha256:27602401178d54f1964442287b9f23f67a3fa2252645ee8065839ea1c3f69e45
+          image: ghcr.io/seerr-team/seerr@sha256:b00989ab7cf7d21a73ba4d3c02a9b9459b279a9b237d59bee66dcace8dccd1cb
           securityContext:
             allowPrivilegeEscalation: false
             capabilities:
@@ -110,11 +107,8 @@ spec:
   selector: { matchLabels: { app: qbittorrent } }
   strategy:
     canary:
-      steps:
-        - setWeight: 50
-        - pause: { duration: 30s }
-        - setWeight: 100
-        - pause: { duration: 10s }
+      maxSurge: 0
+      maxUnavailable: 1
   template:
     metadata: { labels: { app: qbittorrent } }
     spec:
@@ -122,7 +116,7 @@ spec:
         kubernetes.io/hostname: rasppi516
       containers:
         - name: qbittorrent
-          image: lscr.io/linuxserver/qbittorrent:latest
+          image: lscr.io/linuxserver/qbittorrent@sha256:0bd594c5324ef3188d83b1d06b86b617c5c7097c522d3c6667633e559ed126cc
           env:
             - { name: PUID, value: "1000" }
             - { name: PGID, value: "1000" }
@@ -152,11 +146,8 @@ spec:
   selector: { matchLabels: { app: sonarr } }
   strategy:
     canary:
-      steps:
-        - setWeight: 50
-        - pause: { duration: 30s }
-        - setWeight: 100
-        - pause: { duration: 10s }
+      maxSurge: 0
+      maxUnavailable: 1
   template:
     metadata: { labels: { app: sonarr } }
     spec:
@@ -164,7 +155,7 @@ spec:
         kubernetes.io/hostname: rasppi516
       containers:
         - name: sonarr
-          image: lscr.io/linuxserver/sonarr:latest
+          image: lscr.io/linuxserver/sonarr@sha256:d3bf2056aa6439d54e1e673ae850b7fc70425b5b2b441414c4f480532f8fe8e0
           env:
             - { name: PUID, value: "1000" }
             - { name: PGID, value: "1000" }
@@ -190,11 +181,8 @@ spec:
   selector: { matchLabels: { app: radarr } }
   strategy:
     canary:
-      steps:
-        - setWeight: 50
-        - pause: { duration: 30s }
-        - setWeight: 100
-        - pause: { duration: 10s }
+      maxSurge: 0
+      maxUnavailable: 1
   template:
     metadata: { labels: { app: radarr } }
     spec:
@@ -202,7 +190,7 @@ spec:
         kubernetes.io/hostname: rasppi516
       containers:
         - name: radarr
-          image: lscr.io/linuxserver/radarr:latest
+          image: lscr.io/linuxserver/radarr@sha256:dba14b0b140bd95134596d60079f72b9bca13eba33587ad65db4fec4bcb67f66
           env:
             - { name: PUID, value: "1000" }
             - { name: PGID, value: "1000" }
@@ -228,11 +216,8 @@ spec:
   selector: { matchLabels: { app: bazarr } }
   strategy:
     canary:
-      steps:
-        - setWeight: 50
-        - pause: { duration: 30s }
-        - setWeight: 100
-        - pause: { duration: 10s }
+      maxSurge: 0
+      maxUnavailable: 1
   template:
     metadata: { labels: { app: bazarr } }
     spec:
@@ -240,7 +225,7 @@ spec:
         kubernetes.io/hostname: rasppi516
       containers:
         - name: bazarr
-          image: lscr.io/linuxserver/bazarr:latest
+          image: lscr.io/linuxserver/bazarr@sha256:db6dc148ee33762245123f76f337a14ca1dc04f816f92b469ee795a3a815bd99
           env:
             - { name: PUID, value: "1000" }
             - { name: PGID, value: "1000" }
@@ -267,11 +252,8 @@ spec:
   selector: { matchLabels: { app: prowlarr } }
   strategy:
     canary:
-      steps:
-        - setWeight: 50
-        - pause: { duration: 30s }
-        - setWeight: 100
-        - pause: { duration: 10s }
+      maxSurge: 0
+      maxUnavailable: 1
   template:
     metadata: { labels: { app: prowlarr } }
     spec:
@@ -279,7 +261,7 @@ spec:
         kubernetes.io/hostname: rasppi516
       containers:
         - name: prowlarr
-          image: lscr.io/linuxserver/prowlarr:latest
+          image: lscr.io/linuxserver/prowlarr@sha256:011b80780dc8cb3c9bfc04c693f4039baf9360df5c2d07b04cc296f31c2b93f2
           env:
             - { name: PUID, value: "1000" }
             - { name: PGID, value: "1000" }

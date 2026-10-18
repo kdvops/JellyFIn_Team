@@ -8,11 +8,8 @@ spec:
   selector: { matchLabels: { app: jellyfin } }
   strategy:
     canary:
-      steps:
-        - setWeight: 50
-        - pause: { duration: 10s }
-        - setWeight: 100
-        - pause: { duration: 10s }
+      maxSurge: 0
+      maxUnavailable: 1
   template:
     metadata: { labels: { app: jellyfin } }
     spec:
@@ -20,7 +17,7 @@ spec:
         kubernetes.io/hostname: rasppi516
       containers:
         - name: jellyfin
-          image: lscr.io/linuxserver/jellyfin:latest
+          image: lscr.io/linuxserver/jellyfin@sha256:90320cf7522a80ae4f343ace77fdcde173f1bf9dc579b9beaffe5bc76f3934e0
           env:
             - { name: PUID, value: "1000" }
             - { name: PGID, value: "1000" }
