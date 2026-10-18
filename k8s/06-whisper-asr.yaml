@@ -10,9 +10,9 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  # Cache reconstruible: una replica evita dejar este PVC degradado en el
-  # cluster de dos nodos.
-  storageClassName: longhorn-rasppi516
+  # Cache reconstruible y ligada al nodo que ejecuta Whisper. Evita consumir
+  # replicas Longhorn para datos que pueden volver a descargarse.
+  storageClassName: local-path
 
 ---
 apiVersion: apps/v1
