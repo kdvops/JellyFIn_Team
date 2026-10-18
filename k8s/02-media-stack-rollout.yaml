@@ -46,31 +46,56 @@ spec:
   selector: { matchLabels: { app: jellyseerr } }
   strategy:
     canary:
-      steps:
-        - setWeight: 50
-        - pause: { duration: 10s }
-        - setWeight: 100
-        - pause: { duration: 10s }
+      # SQLite is stored on the shared config PVC. Never run the old and new
+      # application versions concurrently during schema migrations.
+      maxSurge: 0
+      maxUnavailable: 1
   template:
     metadata: { labels: { app: jellyseerr } }
     spec:
+      automountServiceAccountToken: false
       nodeSelector:
         kubernetes.io/hostname: rasppi516
+      securityContext:
+        fsGroup: 1000
+        fsGroupChangePolicy: OnRootMismatch
       containers:
         - name: jellyseerr
-          image: fallenbagel/jellyseerr:latest
+          image: ghcr.io/seerr-team/seerr@sha256:27602401178d54f1964442287b9f23f67a3fa2252645ee8065839ea1c3f69e45
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            privileged: false
+            readOnlyRootFilesystem: false
+            runAsGroup: 1000
+            runAsNonRoot: true
+            runAsUser: 1000
+            seccompProfile:
+              type: RuntimeDefault
           env:
-            - { name: PUID, value: "1000" }
-            - { name: PGID, value: "1000" }
             - { name: TZ, value: "America/Santo_Domingo" }
           ports:
             - { containerPort: 5055, name: http }
+          startupProbe:
+            httpGet: { path: /api/v1/settings/public, port: http }
+            periodSeconds: 5
+            failureThreshold: 36
+          readinessProbe:
+            httpGet: { path: /api/v1/settings/public, port: http }
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+          livenessProbe:
+            httpGet: { path: /api/v1/settings/public, port: http }
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 3
           volumeMounts:
             - { name: cfg, mountPath: /app/config }
-            - { name: media, mountPath: /data/media }
       volumes:
         - { name: cfg,  persistentVolumeClaim: { claimName: jellyseerr-config-pvc } }
-        - { name: media, persistentVolumeClaim: { claimName: media-pvc } }
 
 
 ---
@@ -461,6 +486,3 @@ spec:
 #      volumes:
 #        - { name: cfg,   persistentVolumeClaim: { claimName: avradarr-config-pvc } }
 #        - { name: media, persistentVolumeClaim: { claimName: media-pvc } } 
-
-
-
